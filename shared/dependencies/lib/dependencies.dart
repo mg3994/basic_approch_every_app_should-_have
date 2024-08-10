@@ -15,11 +15,11 @@ export 'package:connectivity_plus/connectivity_plus.dart';
 
 // ?# dev_dependencies:
 
-export 'package:bloc_test/bloc_test.dart';
-export 'package:build_runner/build_runner.dart';
-export 'package:freezed/src/freezed_generator.dart';
-// export 'package:freezed/builder.dart';
-export 'package:json_serializable/json_serializable.dart';
+// export 'package:bloc_test/bloc_test.dart';
+// export 'package:build_runner/build_runner.dart';
+// export 'package:freezed/src/freezed_generator.dart';
+// // export 'package:freezed/builder.dart';
+// export 'package:json_serializable/json_serializable.dart';
 
 // TODO: Export any libraries intended for clients of this package.
 // ?# self_dependencies:
