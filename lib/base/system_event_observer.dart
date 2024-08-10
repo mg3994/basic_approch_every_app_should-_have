@@ -1,5 +1,6 @@
 // Flutter imports:
 
+import 'dart:async';
 import 'dart:ui' as ui;
 
 import 'package:dependencies/dependencies.dart' as connection;
@@ -19,6 +20,7 @@ class SystemEventObserver extends StatefulWidget {
     this.onMemoryPressure,
     this.onAppExitRequest,
     this.onSystemAccessibilityFeaturesChanged,
+    this.onConnectivityChange,
   });
   final Widget child;
   final Function(AppLifecycleState)? lifeCycle;
@@ -27,6 +29,7 @@ class SystemEventObserver extends StatefulWidget {
   final Function()? onMemoryPressure;
   final Future<ui.AppExitResponse> Function()? onAppExitRequest;
   final Function(AccessibilityFeatures)? onSystemAccessibilityFeaturesChanged;
+  final Function(connection.ConnectivityResult)? onConnectivityChange;
 
   @override
   State<SystemEventObserver> createState() => _SystemEventObserverState();
@@ -35,6 +38,8 @@ class SystemEventObserver extends StatefulWidget {
 class _SystemEventObserverState extends State<SystemEventObserver>
     with WidgetsBindingObserver {
   late final _connectivity = _connectivityStream();
+  late final StreamSubscription<connection.ConnectivityResult>
+      _connectivitySubscription;
   Stream<connection.ConnectivityResult> _connectivityStream() async* {
     try {
       final connectivity = connection.Connectivity();
@@ -54,6 +59,18 @@ class _SystemEventObserverState extends State<SystemEventObserver>
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     _checkSemantics();
+    _connectivitySubscription = _connectivityStream().listen((result) {
+      if (widget.onConnectivityChange != null) {
+        widget.onConnectivityChange!(result);
+      }
+      // (error) {
+      //   debugPrint('Connectivity error: $error');
+      // };
+      // () {
+      //   debugPrint('Connectivity stream closed');
+      // };
+      // true;
+    });
   }
 
   void _checkSemantics() {
@@ -161,6 +178,7 @@ class _SystemEventObserverState extends State<SystemEventObserver>
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    _connectivitySubscription.cancel(); // Dispose the connectivity subscription
     super.dispose();
   }
 }
