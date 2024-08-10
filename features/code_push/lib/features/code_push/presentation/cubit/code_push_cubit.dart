@@ -62,20 +62,29 @@ class CodePushCubit extends Cubit<CodePushState> {
   ) : super(CodePushInitial());
 
   Future<void> init() async {
+    //  await PusherBeams.instance.start('cdd88306-52d6-4264-b082-e62fd453cf25');
+    // await PusherBeams.instance.addDeviceInterest('patch_available');
+    //    await PusherBeams.instance.onMessageReceivedInTheForeground(
+    //   (_) => _initCodePush(),
+    // );
+    await _initCodePush();
+  }
+
+  Future<void> _initCodePush() async {
     emit(CodePushLoading());
-    final result = await checkForUpdateUseCase(NoParams());
+    final result = await checkForUpdateUseCase(
+        NoParams()); // isNewPatchAvailableForDownload()
     result.fold(
       (failure) => emit(CodePushError(failure.message)),
-      (updateAvailable) => updateAvailable
-          ? updateApp()
-         
-          : emit(CodePushUpToDate()),
+      (updateAvailable) =>
+          updateAvailable ? updateApp() : emit(CodePushUpToDate()),
     );
   }
 
   Future<void> updateApp() async {
     // emit(CodePushLoading());
-    final result = await performUpdateUseCase(NoParams());
+    final result = await performUpdateUseCase(
+        NoParams()); //downloadUpdateIfAvailable() an d//isNewPatchReadyToInstall()
     result.fold(
       (failure) => emit(CodePushError(failure.message)),
       (isNeedRestart) => emit(CodePushNeedRestart()),
