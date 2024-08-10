@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:component/component.dart' show SystemEventObserver;
 import 'package:flutter/material.dart';
 
@@ -13,9 +15,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+
       builder: (context, child) {
         if (child != null) {
           return SystemEventObserver(
+            onConnectivityChange: (p0) async {
+              print(p0.name);
+            },
             child: child,
           );
         } else {
