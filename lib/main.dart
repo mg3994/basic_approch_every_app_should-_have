@@ -1,4 +1,4 @@
-import 'package:antinna/base/system_event_observer.dart';
+import 'package:component/component.dart' show SystemEventObserver;
 import 'package:flutter/material.dart';
 
 void main() {

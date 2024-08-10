@@ -36,8 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   dependencies:
     path: shared/dependencies
-  # component:
-  #   path: shared/component
+  component:
+    path: shared/component
   # core:
   #   path: core
 

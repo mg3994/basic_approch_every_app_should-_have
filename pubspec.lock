@@ -62,6 +62,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.19.0"
+  component:
+    dependency: "direct main"
+    description:
+      path: "shared/component"
+      relative: true
+    source: path
+    version: "0.0.1"
   connectivity_plus:
     dependency: transitive
     description:
