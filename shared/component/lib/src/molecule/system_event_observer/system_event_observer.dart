@@ -24,6 +24,7 @@ class SystemEventObserver extends StatefulWidget {
     this.onConnectivityChange,
   });
   final Widget child;
+
   final Function(AppLifecycleState)? lifeCycle;
   final Function(Brightness)? onSystemBrightnessChange;
   final Function(List<Locale>?, Locale)? onSystemLocaleChange;
@@ -165,7 +166,7 @@ class _SystemEventObserverState extends State<SystemEventObserver>
                       ),
                       child: Text(
                         (result != connection.ConnectivityResult.none)
-                            ? "Connected"
+                            ? "Connected to ${result.name} Internet"
                             : 'No Internet',
                         style: const TextStyle(color: Colors.white),
                         textAlign: TextAlign.center,

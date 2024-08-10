@@ -1,9 +1,8 @@
-name: preferences
+name: core
 description: "A new Flutter package project."
 version: 0.0.1
 homepage:
 publish_to: "none"
-
 environment:
   sdk: ^3.6.0-128.0.dev
   flutter: ">=1.17.0"
@@ -12,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   dependencies:
-    path: ../dependencies
+    path: ../shared/dependencies
 
 dev_dependencies:
   flutter_test:
