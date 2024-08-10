@@ -2,9 +2,12 @@
 
 import 'dart:ui' as ui;
 
+import 'package:dependencies/dependencies.dart' as connection;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/semantics.dart';
+
+import 'package:antinna/component/lib/src/atom/banner_host.dart';
 
 class SystemEventObserver extends StatefulWidget {
   const SystemEventObserver({
@@ -31,6 +34,21 @@ class SystemEventObserver extends StatefulWidget {
 
 class _SystemEventObserverState extends State<SystemEventObserver>
     with WidgetsBindingObserver {
+  late final _connectivity = _connectivityStream();
+  Stream<connection.ConnectivityResult> _connectivityStream() async* {
+    try {
+      final connectivity = connection.Connectivity();
+      final result = await connectivity.checkConnectivity();
+      yield result.first; //single distinct result only
+      yield* connectivity.onConnectivityChanged.expand(
+        (results) => results,
+      ); // Flatten the stream
+    } catch (e) {
+      // Handle the error appropriately
+      debugPrint('Connectivity error: $e');
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -105,7 +123,40 @@ class _SystemEventObserverState extends State<SystemEventObserver>
   }
 
   @override
-  Widget build(BuildContext context) => widget.child;
+  Widget build(BuildContext context) =>
+      StreamBuilder<connection.ConnectivityResult>(
+          stream: _connectivity,
+          builder: (
+            BuildContext context,
+            AsyncSnapshot<connection.ConnectivityResult> streamSnapshot,
+          ) {
+            if (streamSnapshot.connectionState != ConnectionState.active) {
+              return const CircularProgressIndicator(); //TODO load splash here
+            } else {
+              final result = streamSnapshot.requireData;
+              return BannerHost(
+                  hideBanner: result != connection.ConnectivityResult.none,
+                  banner: Material(
+                    color: (result != connection.ConnectivityResult.none)
+                        ? Colors.green
+                        : Colors.red,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 4.0,
+                        horizontal: 12.0,
+                      ),
+                      child: Text(
+                        (result != connection.ConnectivityResult.none)
+                            ? "Connected"
+                            : 'No Internet',
+                        style: const TextStyle(color: Colors.white),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  child: widget.child);
+            }
+          });
 
   @override
   void dispose() {

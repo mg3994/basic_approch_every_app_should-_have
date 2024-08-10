@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
           );
         }
       },
+      // onGenerateInitialRoutes: (initialRoute) => ,
       initialRoute: '/',
       onGenerateRoute: (settings) {
         switch (settings.name) {
