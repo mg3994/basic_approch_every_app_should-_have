@@ -87,7 +87,9 @@ class CodePushCubit extends Cubit<CodePushState> {
         NoParams()); //downloadUpdateIfAvailable() an d//isNewPatchReadyToInstall()
     result.fold(
       (failure) => emit(CodePushError(failure.message)),
-      (isNeedRestart) => emit(CodePushNeedRestart()),
+      (isNeedRestart) => isNeedRestart
+          ? emit(CodePushNeedRestart())
+          : emit(CodePushUpToDate()),
     );
   }
 }

@@ -21,9 +21,9 @@ class CodePushRepositoryImpl implements CodePushRepository {
   @override
   Future<Either<Failure, bool>> performUpdate() async {
     try {
-      await _client.performUpdate();
-      await Future.delayed(const Duration(seconds: 20));
-      return const Right(true);
+      final bool isNeedRestart = await _client.performUpdate();
+
+      return Right(isNeedRestart);
     } catch (e) {
       return const Left(ServerFailure('Failed to perform update'));
     }
@@ -40,10 +40,15 @@ abstract class CodePushClient {
 class CodePushClientImpl extends CodePushClient {
   @override
   checkForUpdate() async {
-    await Future.delayed(const Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 2));
     return true;
   }
 
   @override
-  performUpdate() {}
+  performUpdate() async {
+    await Future.delayed(const Duration(seconds: 4));
+    //download
+    //should install now
+    return true; //if true then it need restart else all done already
+  }
 }
