@@ -1,6 +1,9 @@
 # antinna
 
 A new Flutter project.
+# My Idea 
+* cubit for basic app features ike themes and locales and codepush
+* flutter_bloc or say bloc for advanced features
 
 ## Getting Started
 
