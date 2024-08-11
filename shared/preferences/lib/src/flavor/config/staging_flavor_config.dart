@@ -1,12 +1,19 @@
 part of '../config.dart';
 
-class StagingConfig implements FlavorConfig {
-  @override
-  String get appName => "[STG] Antinna";
+// class StagingConfig implements FlavorConfig {
+//   const StagingConfig();
 
-  @override
-  final baseUrl = Uri.parse('https://stg.example.com');
+//   @override
+//   String get appName => "[STG] Antinna";
 
-  @override
-  final flavor = Flavor.staging;
+//   @override
+//   String get baseUrl => 'https://stg.example.com';
+
+//   @override
+//   final flavor = Flavor.staging;
+// }
+class _StagingFlavorConfig extends FlavorConfig {
+  const _StagingFlavorConfig()
+      : super._internal(
+            "[STG] Antinna", 'https://stag.example.com', Flavor.staging);
 }

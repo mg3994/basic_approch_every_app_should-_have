@@ -1,7 +1,6 @@
 // import 'package:bloc/bloc.dart';
 import 'package:core/usecases/usecase.dart';
 import 'package:dependencies/dependencies.dart';
-import 'package:meta/meta.dart';
 
 // part 'code_push_state.dart';
 
@@ -59,7 +58,7 @@ class CodePushCubit extends Cubit<CodePushState> {
   CodePushCubit(
     this.checkForUpdateUseCase,
     this.performUpdateUseCase,
-  ) : super(CodePushInitial());
+  ) : super(const CodePushInitial());
 
   Future<void> init() async {
     //  await PusherBeams.instance.start('cdd88306-52d6-4264-b082-e62fd453cf25');
@@ -71,13 +70,13 @@ class CodePushCubit extends Cubit<CodePushState> {
   }
 
   Future<void> _initCodePush() async {
-    emit(CodePushLoading());
+    emit(const CodePushLoading());
     final result = await checkForUpdateUseCase(
         NoParams()); // isNewPatchAvailableForDownload()
     result.fold(
       (failure) => emit(CodePushError(failure.message)),
       (updateAvailable) =>
-          updateAvailable ? updateApp() : emit(CodePushUpToDate()),
+          updateAvailable ? updateApp() : emit(const CodePushUpToDate()),
     );
   }
 
@@ -88,8 +87,8 @@ class CodePushCubit extends Cubit<CodePushState> {
     result.fold(
       (failure) => emit(CodePushError(failure.message)),
       (isNeedRestart) => isNeedRestart
-          ? emit(CodePushNeedRestart())
-          : emit(CodePushUpToDate()),
+          ? emit(const CodePushNeedRestart())
+          : emit(const CodePushUpToDate()),
     );
   }
 }

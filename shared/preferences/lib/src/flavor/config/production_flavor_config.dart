@@ -1,12 +1,19 @@
 part of '../config.dart';
 
-class ProductionConfig implements FlavorConfig {
-  @override
-  String get appName => "Antinna";
+// class ProductionConfig implements FlavorConfig {
+//   const ProductionConfig();
+//   @override
+//   String get appName => "Antinna";
 
-  @override
-  final baseUrl = Uri.parse('https://example.com');
+//   @override
+//   String get baseUrl => 'https://example.com';
 
-  @override
-  final flavor = Flavor.production;
+//   @override
+//   final flavor = Flavor.production;
+// }
+
+class _ProductionFlavorConfig extends FlavorConfig {
+  const _ProductionFlavorConfig()
+      : super._internal(
+            'Antinna', 'https://prod.example.com', Flavor.production);
 }

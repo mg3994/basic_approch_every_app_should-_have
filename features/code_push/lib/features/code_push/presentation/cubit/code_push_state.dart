@@ -11,16 +11,24 @@ abstract class CodePushState {
 }
 
 @Equatable()
-final class CodePushInitial extends CodePushState {}
+final class CodePushInitial extends CodePushState {
+  const CodePushInitial();
+}
 
 @Equatable()
-final class CodePushLoading extends CodePushState {}
+final class CodePushLoading extends CodePushState {
+  const CodePushLoading();
+}
 
 @Equatable()
-final class CodePushUpToDate extends CodePushState {}
+final class CodePushUpToDate extends CodePushState {
+  const CodePushUpToDate();
+}
 
 @Equatable()
-final class CodePushNeedRestart extends CodePushState {}
+final class CodePushNeedRestart extends CodePushState {
+  const CodePushNeedRestart();
+}
 
 @Equatable()
 final class CodePushError extends CodePushState {

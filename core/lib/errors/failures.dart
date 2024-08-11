@@ -45,13 +45,13 @@
 
 import 'package:dependencies/dependencies.dart';
 
-
 @Equatable()
 abstract class Failure {
   final String message;
 
   const Failure(this.message);
 }
+
 @Equatable()
 class ServerFailure extends Failure {
   const ServerFailure(super.message);

@@ -1,3 +1,4 @@
+
 import 'package:flutter/services.dart' show appFlavor;
 
 part 'config/flavor_config.dart';

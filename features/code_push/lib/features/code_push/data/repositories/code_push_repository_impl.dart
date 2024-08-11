@@ -6,7 +6,7 @@ import '../../domain/repositories/code_push_repository.dart';
 class CodePushRepositoryImpl implements CodePushRepository {
   final CodePushClient _client;
 
-  CodePushRepositoryImpl(this._client);
+  const CodePushRepositoryImpl(this._client);
 
   @override
   Future<Either<Failure, bool>> checkForUpdate() async {
@@ -33,11 +33,13 @@ class CodePushRepositoryImpl implements CodePushRepository {
 //dummy class for
 
 abstract class CodePushClient {
+  const CodePushClient();
   checkForUpdate();
   performUpdate();
 }
 
-class CodePushClientImpl extends CodePushClient {
+final class CodePushClientImpl extends CodePushClient {
+  const CodePushClientImpl();
   @override
   checkForUpdate() async {
     await Future.delayed(const Duration(seconds: 2));

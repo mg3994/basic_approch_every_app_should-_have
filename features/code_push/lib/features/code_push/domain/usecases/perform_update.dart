@@ -5,7 +5,7 @@ import '../repositories/code_push_repository.dart';
 class PerformUpdateUseCase extends UseCase<void, NoParams> {
   final CodePushRepository repository;
 
-  PerformUpdateUseCase(this.repository);
+  const PerformUpdateUseCase(this.repository);
 
   @override
   Future<Either<Failure, bool>> call(NoParams params) async {

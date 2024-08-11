@@ -27,11 +27,9 @@ class MyApp extends StatelessWidget {
         //     create: (_) => FavoritesCubit(),
         //   ),
         BlocProvider(create: (context) {
-          final CodePushClient codePushClient = CodePushClientImpl();
-          final CodePushRepository codePushRepository =
-              CodePushRepositoryImpl(codePushClient);
-          final checkForUpdateUseCase =
-                  CheckForUpdateUseCase(codePushRepository),
+          final codePushClient = const CodePushClientImpl(),
+              codePushRepository = CodePushRepositoryImpl(codePushClient),
+              checkForUpdateUseCase = CheckForUpdateUseCase(codePushRepository),
               performUpdateUseCase = PerformUpdateUseCase(codePushRepository);
           return CodePushCubit(checkForUpdateUseCase, performUpdateUseCase)
             ..init();

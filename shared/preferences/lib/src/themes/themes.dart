@@ -39,7 +39,7 @@ class AntinnaAppTheme extends ThemeExtension<AntinnaAppTheme> {
         appColor1 = _adjustColor(seedColor, isDarkThemeMode, 50, 10),
         appColor2 = _adjustColor(seedColor, isDarkThemeMode, 50, 10);
 
-  static Color _adjustColor(
+  static  Color _adjustColor(
       Color color, bool isDark, int darkValue, int lightValue) {
     return isDark ? color.withAlpha(darkValue) : color.withAlpha(lightValue);
   }
