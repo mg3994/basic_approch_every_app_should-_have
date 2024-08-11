@@ -36,8 +36,11 @@ dependencies:
   cupertino_icons: ^1.0.8
   dependencies:
     path: shared/dependencies
+  preferences:
+    path: shared/preferences
   component:
     path: shared/component
+
   core:
     path: core
 
@@ -56,9 +59,6 @@ dev_dependencies:
   # rules and activating additional ones.
   # All code gen dev deped. package must be here
   flutter_lints: ^4.0.0
-  build_runner:
-  freezed:
-  json_Serializer:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

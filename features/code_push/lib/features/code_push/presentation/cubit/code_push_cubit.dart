@@ -76,11 +76,11 @@ class CodePushCubit extends Cubit<CodePushState> {
     result.fold(
       (failure) => emit(CodePushError(failure.message)),
       (updateAvailable) =>
-          updateAvailable ? updateApp() : emit(const CodePushUpToDate()),
+          updateAvailable ? _updateApp() : emit(const CodePushUpToDate()),
     );
   }
 
-  Future<void> updateApp() async {
+  Future<void> _updateApp() async {
     // emit(CodePushLoading());
     final result = await performUpdateUseCase(
         NoParams()); //downloadUpdateIfAvailable() an d//isNewPatchReadyToInstall()

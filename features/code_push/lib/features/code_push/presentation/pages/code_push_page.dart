@@ -36,6 +36,8 @@
 // }
 
 //////////////////?
+// import 'dart:isolate';
+
 import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
 
@@ -52,16 +54,29 @@ class CodePushListener extends StatelessWidget {
         if (state is CodePushNeedRestart) {
           ScaffoldMessenger.maybeOf(context)
             ?..hideCurrentMaterialBanner()
-            ..showMaterialBanner(
-                MaterialBanner(content: const Text("Restart Now"), actions: [ //TODO design this
-              BackButton(
-                onPressed: () {
-                  ScaffoldMessenger.maybeOf(context)
-                      ?.hideCurrentMaterialBanner();
-                  // restart
-                },
-              )
-            ]));
+            ..showMaterialBanner(MaterialBanner(
+              content: const Text(
+                  "A new update is available. Restart now to apply the update."),
+              leading: Icon(Icons.system_update,
+                  color: Theme.of(context).primaryColor),
+              leadingPadding: const EdgeInsets.only(right: 20),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    ScaffoldMessenger.maybeOf(context)
+                        ?.hideCurrentMaterialBanner();
+                    //TODO: Restart now to apply
+                    // Isolate.current.kill(priority: Isolate.immediate);
+                    // Isolate.exit();
+
+                    // SystemNavigator.pop().then((v) {
+                    //   SystemNavigator.routeInformationUpdated();
+                    // });
+                  },
+                  child: const Text("RESTART NOW"),
+                ),
+              ],
+            ));
         }
         if (state is CodePushUpToDate || state is CodePushError) {
           ScaffoldMessenger.maybeOf(context)?.hideCurrentMaterialBanner();

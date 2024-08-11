@@ -122,9 +122,9 @@ class DetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Details Page'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Details Page'),
+      // ),
       body: Center(
         child: Text('This is the Details Page'),
       ),
