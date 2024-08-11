@@ -2,6 +2,7 @@ import 'package:code_push/code_push.dart';
 import 'package:code_push/features/code_push/domain/usecases/check_for_update.dart';
 import 'package:code_push/features/code_push/domain/usecases/perform_update.dart';
 import 'package:component/component.dart' show SystemEventObserver;
+
 import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
 
@@ -25,13 +26,16 @@ class MyApp extends StatelessWidget {
         //   BlocProvider(
         //     create: (_) => FavoritesCubit(),
         //   ),
-        BlocProvider(
-            create: (context) => CodePushCubit(
-                  CheckForUpdateUseCase(
-                      CodePushRepositoryImpl(CodePushClientImpl())),
-                  PerformUpdateUseCase(
-                      CodePushRepositoryImpl(CodePushClientImpl())),
-                )..init()),
+        BlocProvider(create: (context) {
+          final CodePushClient codePushClient = CodePushClientImpl();
+          final CodePushRepository codePushRepository =
+              CodePushRepositoryImpl(codePushClient);
+          final checkForUpdateUseCase =
+                  CheckForUpdateUseCase(codePushRepository),
+              performUpdateUseCase = PerformUpdateUseCase(codePushRepository);
+          return CodePushCubit(checkForUpdateUseCase, performUpdateUseCase)
+            ..init();
+        }),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

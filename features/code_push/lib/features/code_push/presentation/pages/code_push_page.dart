@@ -53,7 +53,7 @@ class CodePushListener extends StatelessWidget {
           ScaffoldMessenger.maybeOf(context)
             ?..hideCurrentMaterialBanner()
             ..showMaterialBanner(
-                MaterialBanner(content: const Text("Restart Now"), actions: [
+                MaterialBanner(content: const Text("Restart Now"), actions: [ //TODO design this
               BackButton(
                 onPressed: () {
                   ScaffoldMessenger.maybeOf(context)

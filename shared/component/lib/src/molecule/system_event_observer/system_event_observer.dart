@@ -25,13 +25,14 @@ class SystemEventObserver extends StatefulWidget {
   });
   final Widget child;
 
-  final Function(AppLifecycleState)? lifeCycle;
-  final Function(Brightness)? onSystemBrightnessChange;
-  final Function(List<Locale>?, Locale)? onSystemLocaleChange;
-  final Function()? onMemoryPressure;
+  final void Function(AppLifecycleState)? lifeCycle;
+  final void Function(Brightness)? onSystemBrightnessChange;
+  final void Function(List<Locale>?, Locale)? onSystemLocaleChange;
+  final void Function()? onMemoryPressure;
   final Future<ui.AppExitResponse> Function()? onAppExitRequest;
-  final Function(AccessibilityFeatures)? onSystemAccessibilityFeaturesChanged;
-  final Function(connection.ConnectivityResult)? onConnectivityChange;
+  final void Function(AccessibilityFeatures)?
+      onSystemAccessibilityFeaturesChanged;
+  final void Function(connection.ConnectivityResult)? onConnectivityChange;
 
   @override
   State<SystemEventObserver> createState() => _SystemEventObserverState();
