@@ -72,7 +72,7 @@ class CodePushCubit extends Cubit<CodePushState> {
   Future<void> _initCodePush() async {
     emit(const CodePushLoading());
     final result = await checkForUpdateUseCase(
-        NoParams()); // isNewPatchAvailableForDownload()
+        const NoParams()); // isNewPatchAvailableForDownload()
     result.fold(
       (failure) => emit(CodePushError(failure.message)),
       (updateAvailable) =>
@@ -83,7 +83,7 @@ class CodePushCubit extends Cubit<CodePushState> {
   Future<void> _updateApp() async {
     // emit(CodePushLoading());
     final result = await performUpdateUseCase(
-        NoParams()); //downloadUpdateIfAvailable() an d//isNewPatchReadyToInstall()
+        const NoParams()); //downloadUpdateIfAvailable() then return true ; else error then false ;//an d//isNewPatchReadyToInstall()
     result.fold(
       (failure) => emit(CodePushError(failure.message)),
       (isNeedRestart) => isNeedRestart

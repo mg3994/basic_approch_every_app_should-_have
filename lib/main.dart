@@ -27,6 +27,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        // BlocProvider(lazy: false,create: (_) => ThemeModeCubit()),
+        // BlocProvider(lazy: false,create: (_) => ThemeSeedCubit()),
+        // BlocProvider(lazy: false,create: (_) => LocaleCubit()),
         //  BlocProvider(
         //     create: (_) => ThemeCubit(),
         //   ),
@@ -45,10 +48,26 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: appLightTheme(Colors.red),
+        darkTheme: appDarkTheme(Colors.red),
+        // themeMode:
+        //     BlocProvider.of<ThemeModeCubit>(context, listen: true).state.themeMode, // we have state of themeMode as we are storing enum index of ThemeMode in sharedprefs
+        // theme: appLightTheme(
+        //     BlocProvider.of<ThemeSeedCubit>(context, listen: true).state.seedColor), //color as int is stored in sf
+        // darkTheme: appDarkTheme(
+        //     BlocProvider.of<ThemeSeedCubit>(context, listen: true).state.seedColor),
 
         builder: (context, child) {
           if (child != null) {
             return SystemEventObserver(
+              // onSystemBrightnessChange: (Brightness enumBrightness) =>
+              //     BlocProvider.of<ThemeModeCubit>(context)
+              //         .ifThemeModeSystemThenChangeThemeMode(
+              //             enumBrightness), //enum is dark and light
+              // onSystemLocaleChange:
+              //     (List<Locale>? systemAllLocaleList, Locale preferedLocale) =>
+              //         BlocProvider.of<LocaleCubit>(context)
+              //             .ifLocaleModeSystemThenChangeLocaleToPreferedLocaleDefaultIsEnglish(
+              //                 preferedLocale, systemAllLocaleList),
               child: CodePushListener(child: child),
             );
           } else {
@@ -71,8 +90,6 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (context) => NotFoundPage());
           }
         },
-
-        // home: const MyHomePage(title: 'Flutter Demo Home Page'),
       ),
     );
   }
@@ -83,3 +100,15 @@ void allowFirstFrame() {
     RendererBinding.instance.allowFirstFrame();
   }
 }
+
+
+
+// final _setUpBlocProvider = [
+//   BlocProvider(create: (context) {
+//     final codePushClient = const CodePushClientImpl(),
+//         codePushRepository = CodePushRepositoryImpl(codePushClient),
+//         checkForUpdateUseCase = CheckForUpdateUseCase(codePushRepository),
+//         performUpdateUseCase = PerformUpdateUseCase(codePushRepository);
+//     return CodePushCubit(checkForUpdateUseCase, performUpdateUseCase)..init();
+//   })
+// ];
