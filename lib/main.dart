@@ -49,7 +49,8 @@ class _MyAppState extends State<MyApp> {
   Future<void> _initializeHive() async {
     final hiveInitializer = HiveInitializer();
     await hiveInitializer.init();
-    _box = await hiveInitializer.openAppBox('theme_mode');
+    _box = await hiveInitializer.openAppBox(HiveKeys
+        .themeModeBox); //open box then put in that box also don't forget to close that
   }
 
   @override
