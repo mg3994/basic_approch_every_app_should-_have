@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import '../../domain/repositories/theme_mode_repository.dart';
 import '../datasources/local/theme_mode_local_data_source.dart';
 
-class ThemeRepositoryImpl implements ThemeModeRepository {
+class ThemeModeRepositoryImpl implements ThemeModeRepository {
   final ThemeModeLocalDataSource localDataSource;
 
-  ThemeRepositoryImpl(this.localDataSource);
+  ThemeModeRepositoryImpl(this.localDataSource);
 
   @override
   Future<Either<Failure, ThemeMode>> getThemeMode() async {

@@ -11,7 +11,9 @@ class ThemeModeCubit extends Cubit<ThemeMode> {
   final GetThemeModeUseCase getThemeModeUseCase;
   final SetThemeModeUseCase setThemeModeUseCase;
   ThemeModeCubit(this.getThemeModeUseCase, this.setThemeModeUseCase)
-      : super(ThemeMode.system);
+      : super(ThemeMode.system) {
+    loadThemeMode();
+  }
   void loadThemeMode() async {
     final Either<Failure, ThemeMode> result =
         await getThemeModeUseCase(const NoParams());
@@ -35,18 +37,29 @@ class ThemeModeCubit extends Cubit<ThemeMode> {
   }
 
   void ifThemeModeSystemThenChangeThemeMode(Brightness brightness) async {
-    if (state == ThemeMode.system) {
-      switch (brightness) {
-        case Brightness.light:
-          return emit(ThemeMode.light);
-        case Brightness.dark:
-          return emit(ThemeMode.dark);
+    final Either<Failure, ThemeMode> result =
+        await getThemeModeUseCase(const NoParams());
 
-        default:
-          return emit(ThemeMode.system);
-      }
-    }
+    result.fold(
+      (failure) =>
+          emit(ThemeMode.system), // Fallback to system if there's a failure
+      (themeMode) {
+        if (themeMode == ThemeMode.system) {
+          switch (brightness) {
+            case Brightness.light:
+              emit(ThemeMode.light);
+              break;
+            case Brightness.dark:
+              emit(ThemeMode.dark);
+              break;
+            default:
+              emit(ThemeMode.system);
+          }
+        }
+      },
+    );
   }
+}
   // int? sf = 0;
   // ifThemeModeSystemThenChangeThemeMode(Brightness brightness) {
   //   if ((brightness == Brightness.dark) && (sf == null || sf == 0)) {
@@ -55,4 +68,4 @@ class ThemeModeCubit extends Cubit<ThemeMode> {
   //     emit(ThemeMode.light);
   //   }
   // }
-}
+

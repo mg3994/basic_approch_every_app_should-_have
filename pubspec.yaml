@@ -47,6 +47,8 @@ dependencies:
   # ------------- Feature Module
   code_push:
     path: features/code_push
+  theme_mode:
+    path: features/theme_mode
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,5 @@
-import 'package:hive/hive.dart';
+import 'package:core/core.dart';
+import 'package:dependencies/dependencies.dart' as hive;
 import 'package:flutter/material.dart';
 
 abstract class ThemeModeLocalDataSource {
@@ -7,7 +8,7 @@ abstract class ThemeModeLocalDataSource {
 }
 
 class ThemeModeLocalDataSourceImpl implements ThemeModeLocalDataSource {
-  final Box box;
+  final hive.Box box;
 
   ThemeModeLocalDataSourceImpl(this.box);
 

@@ -13,6 +13,9 @@ export 'package:equatable_macro/equatable_macro.dart';
 export 'package:dartz/dartz.dart';
 export 'package:connectivity_plus/connectivity_plus.dart';
 
+// export 'package:hive/hive.dart';
+export 'package:hive_flutter/hive_flutter.dart';
+
 // ?# dev_dependencies:
 
 // export 'package:bloc_test/bloc_test.dart';
