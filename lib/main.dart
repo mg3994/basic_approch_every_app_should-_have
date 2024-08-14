@@ -13,24 +13,26 @@ import 'package:theme_mode/theme_mode.dart';
 
 import 'test/test.dart';
 
-void main() async {
+void main() {
+  // I don't want to put anything in this main method because i want to start app normally no heavy duty
   FlavorConfig config = FlavorConfig(appflavor: "staging");
   print(config.appName);
   print(config.baseUrl);
   print(config.flavor.name);
 //  RendererBinding.instance.deferFirstFrame(); //TODO:?? Init state after run app
-  await dependency.Hive.initFlutter(); // Initialize Hive
+  // await dependency.Hive.initFlutter(); // Initialize Hive
 
-  // // Open Hive box for theme mode
-  var box = await dependency.Hive.openBox('appBox');
-  runApp(MyApp(
-    box: box,
-  ));
+  // // // Open Hive box for theme mode
+  // var box = await dependency.Hive.openBox('appBox');
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key, required this.box});
-  final dependency.Box box;
+  const MyApp({
+    super.key,
+    //  required this.box
+  });
+  // final dependency.Box box;
 
   @override
   State<MyApp> createState() => _MyAppState();

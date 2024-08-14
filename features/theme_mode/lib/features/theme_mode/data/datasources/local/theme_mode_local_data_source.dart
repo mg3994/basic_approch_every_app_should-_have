@@ -14,7 +14,7 @@ class ThemeModeLocalDataSourceImpl implements ThemeModeLocalDataSource {
 
   @override
   Future<ThemeMode?> getThemeMode() async {
-    final int? themeIndex = box.get(HiveKeys.themeMode);
+    final int? themeIndex = box.get(HiveKeys.themeModeKey);
     if (themeIndex != null) {
       return ThemeMode.values[themeIndex];
     }
@@ -23,6 +23,6 @@ class ThemeModeLocalDataSourceImpl implements ThemeModeLocalDataSource {
 
   @override
   Future<void> setThemeMode(ThemeMode themeMode) async {
-    await box.put(HiveKeys.themeMode, themeMode.index);
+    await box.put(HiveKeys.themeModeKey, themeMode.index);
   }
 }
