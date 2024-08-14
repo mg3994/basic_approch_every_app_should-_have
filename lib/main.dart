@@ -57,6 +57,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void dispose() {
+    _box.compact(); //performance stuff file size decrease which incease performance and app sze say memory
     _box.close();
 
     super.dispose();
