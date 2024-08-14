@@ -1,4 +1,5 @@
 import 'package:code_push/code_push.dart';
+import 'package:code_push/features/ThemeMode/presentation/cubit/theme_mode_cubit.dart';
 import 'package:code_push/features/code_push/domain/usecases/check_for_update.dart';
 import 'package:code_push/features/code_push/domain/usecases/perform_update.dart';
 import 'package:component/component.dart' show SystemEventObserver;
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        // BlocProvider(lazy: false,create: (_) => ThemeModeCubit()),
+        BlocProvider(lazy: false, create: (_) => ThemeModeCubit()),
         // BlocProvider(lazy: false,create: (_) => ThemeSeedCubit()),
         // BlocProvider(lazy: false,create: (_) => LocaleCubit()),
         //  BlocProvider(
@@ -45,54 +46,66 @@ class MyApp extends StatelessWidget {
             ..init();
         }),
       ],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: appLightTheme(Colors.red),
-        darkTheme: appDarkTheme(Colors.red),
-        // themeMode:
-        //     BlocProvider.of<ThemeModeCubit>(context, listen: true).state.themeMode, // we have state of themeMode as we are storing enum index of ThemeMode in sharedprefs
-        // theme: appLightTheme(
-        //     BlocProvider.of<ThemeSeedCubit>(context, listen: true).state.seedColor), //color as int is stored in sf
-        // darkTheme: appDarkTheme(
-        //     BlocProvider.of<ThemeSeedCubit>(context, listen: true).state.seedColor),
+      child: StatefulBuilder(builder: (context, setState) {
+        return MaterialApp(
+          title: 'Flutter Demo',
+          theme: appLightTheme(Colors.red),
+          darkTheme: appDarkTheme(Colors.red),
+          themeMode: BlocProvider.of<ThemeModeCubit>(context, listen: true)
+              .state, // we have state of themeMode as we are storing enum index of ThemeMode in sharedprefs
+          // theme: appLightTheme(
+          //     BlocProvider.of<ThemeSeedCubit>(context, listen: true).state.seedColor), //color as int is stored in sf
+          // darkTheme: appDarkTheme(
+          //     BlocProvider.of<ThemeSeedCubit>(context, listen: true).state.seedColor),
 
-        builder: (context, child) {
-          if (child != null) {
-            return SystemEventObserver(
-              // onSystemBrightnessChange: (Brightness enumBrightness) =>
-              //     BlocProvider.of<ThemeModeCubit>(context)
-              //         .ifThemeModeSystemThenChangeThemeMode(
-              //             enumBrightness), //enum is dark and light
-              // onSystemLocaleChange:
-              //     (List<Locale>? systemAllLocaleList, Locale preferedLocale) =>
-              //         BlocProvider.of<LocaleCubit>(context)
-              //             .ifLocaleModeSystemThenChangeLocaleToPreferedLocaleDefaultIsEnglish(
-              //                 preferedLocale, systemAllLocaleList),
-              child: CodePushListener(child: child),
-            );
-          } else {
-            return const Center(
-              child: Text("App Not Started Correctly"), //TODO: this a widget
-            );
-          }
-        },
+          builder: (context, child) {
+            if (child != null) {
+              return SystemEventObserver(
+                onSystemBrightnessChange: (Brightness enumBrightness) {
+                  print(enumBrightness);
+                  BlocProvider.of<ThemeModeCubit>(context)
+                      .ifThemeModeSystemThenChangeThemeMode(enumBrightness);
+                }, //enum is dark and light
+                // onSystemLocaleChange:
+                //     (List<Locale>? systemAllLocaleList, Locale preferedLocale) =>
+                //         BlocProvider.of<LocaleCubit>(context)
+                //             .ifLocaleModeSystemThenChangeLocaleToPreferedLocaleDefaultIsEnglish(
+                //                 preferedLocale, systemAllLocaleList),
+                child: CodePushListener(child: child),
+              );
+            } else {
+              return const Center(
+                child: Text("App Not Started Correctly"), //TODO: this a widget
+              );
+            }
+          },
 
-        initialRoute: '/',
-        onGenerateRoute: (settings) {
-          switch (settings.name) {
-            case '/':
-              return MaterialPageRoute(builder: (context) => HomePage());
-            case '/details':
-              return MaterialPageRoute(builder: (context) => DetailsPage());
-            case '/settings':
-              return MaterialPageRoute(builder: (context) => SettingsPage());
-            default:
-              return MaterialPageRoute(builder: (context) => NotFoundPage());
-          }
-        },
-      ),
+          initialRoute:
+              '/', //show walk threw onboarding and choose language screen
+          onGenerateRoute: (settings) {
+            switch (settings.name) {
+              case '/':
+                return MaterialPageRoute(builder: (context) => HomePage());
+              case '/details':
+                return MaterialPageRoute(builder: (context) => DetailsPage());
+              case '/settings':
+                return MaterialPageRoute(builder: (context) => SettingsPage());
+              default:
+                return MaterialPageRoute(builder: (context) => NotFoundPage());
+            }
+          },
+        );
+      }),
     );
   }
+  // CodePushCubit codePushMethod(context) {
+  //     final codePushClient = const CodePushClientImpl(),
+  //         codePushRepository = CodePushRepositoryImpl(codePushClient),
+  //         checkForUpdateUseCase = CheckForUpdateUseCase(codePushRepository),
+  //         performUpdateUseCase = PerformUpdateUseCase(codePushRepository);
+  //     return CodePushCubit(checkForUpdateUseCase, performUpdateUseCase)
+  //       ..init();
+  //   }
 }
 
 void allowFirstFrame() {

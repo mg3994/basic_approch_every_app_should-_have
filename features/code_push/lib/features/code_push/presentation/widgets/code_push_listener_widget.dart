@@ -50,13 +50,19 @@ class CodePushListener extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<CodePushCubit, CodePushState>(
+      listenWhen: (previousState, currentState) =>
+          currentState is CodePushNeedRestart ||
+          currentState is CodePushError ||
+          currentState is CodePushUpToDate,
       listener: (context, state) {
         if (state is CodePushNeedRestart) {
           ScaffoldMessenger.maybeOf(context)
             ?..hideCurrentMaterialBanner()
             ..showMaterialBanner(MaterialBanner(
-              content: const Text(
-                  "A new update is available. Restart now to apply the update."),
+              content: Text(
+                "A new update is available. Restart now to apply the update.",
+                style: TextStyle(color: Theme.of(context).primaryColor),
+              ),
               leading: Icon(Icons.system_update,
                   color: Theme.of(context).primaryColor),
               leadingPadding: const EdgeInsets.only(right: 20),
