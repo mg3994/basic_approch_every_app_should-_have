@@ -38,6 +38,8 @@
 //////////////////?
 // import 'dart:isolate';
 
+import 'dart:async';
+
 import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
 
@@ -55,10 +57,17 @@ class CodePushListener extends StatelessWidget {
           currentState is CodePushError ||
           currentState is CodePushUpToDate,
       listener: (context, state) {
+        // Timer.periodic(Duration(seconds: 10), (Timer timer) {
+        //   print('This message prints every 10 seconds');
+        //   print(Theme.of(context).brightness);
+        //   print(Theme.of(context).textTheme.bodyMedium?.color.toString());
+        // });
+
         if (state is CodePushNeedRestart) {
           ScaffoldMessenger.maybeOf(context)
             ?..hideCurrentMaterialBanner()
             ..showMaterialBanner(MaterialBanner(
+              dividerColor: Colors.transparent,
               content: const Text(
                 "A new update is available. Restart now to apply the update.",
               ),

@@ -16,6 +16,7 @@ ThemeData _appTheme(Color seedColor, bool isDarkThemeMode) {
       ? ThemeData.dark(useMaterial3: true)
       : ThemeData.light(useMaterial3: true);
   return baseTheme.copyWith(
+    brightness: isDarkThemeMode ? Brightness.dark : Brightness.light,
     colorScheme: ColorScheme.fromSeed(seedColor: seedColor),
     scaffoldBackgroundColor:
         isDarkThemeMode ? const Color(0xFF303030) : const Color(0xFFf5f5f5),
