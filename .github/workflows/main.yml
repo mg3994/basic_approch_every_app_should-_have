@@ -41,7 +41,7 @@ jobs:
       - run: flutter --version
       - run: flutter pub get
       # you can even build aab or ipa as per your command but remember you need to change the relese code for  artifacts:  directory
-      - run: flutter build apk --release --split-per-abi
+      - run: flutter build apk --enable-experiment=macros --release --split-per-abi
       - name: Push to Releases
         uses: ncipollo/release-action@v1
         with:
