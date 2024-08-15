@@ -31,7 +31,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v1
         with:
-          java-version: "12.x"
+          java-version: "17.x"
           # you can change subosito/flutter-action@version as per your choice
       - uses: subosito/flutter-action@v2
         with:
