@@ -121,6 +121,7 @@ class _MyAppState extends State<MyApp> {
                 builder: (context, child) {
                   if (child != null) {
                     return SystemEventObserver(
+                      ///? no need to use systembrightness as system will change it automatically in ThemeMode.system.
                       // onSystemBrightnessChange: (Brightness enumBrightness) {
                       //   print(enumBrightness);
                       //   dependency.BlocProvider.of<ThemeModeCubit>(context)
