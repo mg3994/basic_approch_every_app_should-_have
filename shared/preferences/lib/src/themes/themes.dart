@@ -20,8 +20,8 @@ ThemeData _appTheme(Color seedColor, bool isDarkThemeMode) {
     scaffoldBackgroundColor:
         isDarkThemeMode ? const Color(0xFF303030) : const Color(0xFFf5f5f5),
     bannerTheme: isDarkThemeMode
-        ? const MaterialBannerThemeData(backgroundColor: Colors.black)
-        : const MaterialBannerThemeData(backgroundColor: Colors.white),
+        ? const MaterialBannerThemeData(backgroundColor: Colors.white)
+        : const MaterialBannerThemeData(backgroundColor: Colors.black),
     iconTheme: IconThemeData(
       color: isDarkThemeMode ? Colors.white : Colors.black,
     ),
@@ -29,7 +29,7 @@ ThemeData _appTheme(Color seedColor, bool isDarkThemeMode) {
     //   : TextStyle(color: isDarkThemeMode ? Colors.white : Colors.black),
     //   button: TextStyle(color: isDarkThemeMode ? Colors.white : Colors.black),
     // ),
-    
+
     extensions: <AntinnaAppTheme>[
       AntinnaAppTheme(isDarkThemeMode: isDarkThemeMode, seedColor: seedColor),
     ],
