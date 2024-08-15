@@ -36,29 +36,29 @@ class ThemeModeCubit extends Cubit<ThemeMode> {
     );
   }
 
-  void ifThemeModeSystemThenChangeThemeMode(Brightness brightness) async {
-    final Either<Failure, ThemeMode> result =
-        await getThemeModeUseCase(const NoParams());
+  // void ifThemeModeSystemThenChangeThemeMode(Brightness brightness) async {
+  //   final Either<Failure, ThemeMode> result =
+  //       await getThemeModeUseCase(const NoParams());
 
-    result.fold(
-      (failure) =>
-          emit(ThemeMode.system), // Fallback to system if there's a failure
-      (themeMode) {
-        if (themeMode == ThemeMode.system) {
-          switch (brightness) {
-            case Brightness.light:
-              emit(ThemeMode.light);
-              break;
-            case Brightness.dark:
-              emit(ThemeMode.dark);
-              break;
-            default:
-              emit(ThemeMode.system);
-          }
-        }
-      },
-    );
-  }
+  //   result.fold(
+  //     (failure) =>
+  //         emit(ThemeMode.system), // Fallback to system if there's a failure
+  //     (themeMode) {
+  //       if (themeMode == ThemeMode.system) {
+  //         switch (brightness) {
+  //           case Brightness.light:
+  //             emit(ThemeMode.light);
+  //             break;
+  //           case Brightness.dark:
+  //             emit(ThemeMode.dark);
+  //             break;
+  //           default:
+  //             emit(ThemeMode.system);
+  //         }
+  //       }
+  //     },
+  //   );
+  // }
 }
   // int? sf = 0;
   // ifThemeModeSystemThenChangeThemeMode(Brightness brightness) {
