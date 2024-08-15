@@ -23,13 +23,13 @@ ThemeData _appTheme(Color seedColor, bool isDarkThemeMode) {
         ? const MaterialBannerThemeData(backgroundColor: Colors.black)
         : const MaterialBannerThemeData(backgroundColor: Colors.white),
     iconTheme: IconThemeData(
-      color: isDarkThemeMode ? Colors.white70 : Colors.black26,
+      color: isDarkThemeMode ? Colors.white70 : Colors.black,
     ),
     textTheme: TextTheme(
       bodySmall:
           TextStyle(color: isDarkThemeMode ? Colors.white70 : Colors.black),
       bodyMedium:
-          TextStyle(color: isDarkThemeMode ? Colors.white70 : Colors.black54),
+          TextStyle(color: isDarkThemeMode ? Colors.white70 : Colors.black),
     ),
     extensions: <AntinnaAppTheme>[
       AntinnaAppTheme(isDarkThemeMode: isDarkThemeMode, seedColor: seedColor),

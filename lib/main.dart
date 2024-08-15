@@ -121,7 +121,7 @@ class _MyAppState extends State<MyApp> {
                 builder: (context, child) {
                   if (child != null) {
                     return SystemEventObserver(
-                      ///? no need to use systembrightness as system will change it automatically in ThemeMode.system.
+                      ///? no need to use systembrightness as system will change it automatically in ThemeMode.system. but it s here if you wish to notify remote api call
                       // onSystemBrightnessChange: (Brightness enumBrightness) {
                       //   print(enumBrightness);
                       //   dependency.BlocProvider.of<ThemeModeCubit>(context)

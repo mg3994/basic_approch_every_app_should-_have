@@ -1,25 +1,25 @@
 ############################################################FOR ANDROID ###########################3 todo change flutterenvironment:
 # sdk: '>=2.19.0-154.0.dev <3.0.0' to sdk: '>=2.17.6 <3.0.0'
 on:
-  pull_request:
-    branches:
-      # you can add more branches
-      - main
-      - master
-      - base
-      - advanced
-      - nobug
-      - auth
-  push:
-    branches:
-      # you can add more branches
-      - main
-      - master
-      - develop
-      - base
-      - advanced
-      - nobug
-      - auth
+  # pull_request:
+  #   branches:
+  #     # you can add more branches
+  #     - main
+  #     - master
+  #     - base
+  #     - advanced
+  #     - nobug
+  #     - auth
+  # push:
+  #   branches:
+  #     # you can add more branches
+  #     - main
+  #     - master
+  #     - develop
+  #     - base
+  #     - advanced
+  #     - nobug
+  #     - auth
 name: "Build & Release"
 jobs:
   build:
