@@ -61,7 +61,7 @@ class CodePushListener extends StatelessWidget {
             ..showMaterialBanner(MaterialBanner(
               content: Text(
                 "A new update is available. Restart now to apply the update.",
-                style: TextStyle(color: Theme.of(context).primaryColor),
+                style: Theme.of(context).bannerTheme.contentTextStyle,
               ),
               leading: const Icon(
                 Icons.system_update,
