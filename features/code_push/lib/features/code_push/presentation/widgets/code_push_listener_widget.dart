@@ -63,8 +63,9 @@ class CodePushListener extends StatelessWidget {
                 "A new update is available. Restart now to apply the update.",
                 style: TextStyle(color: Theme.of(context).primaryColor),
               ),
-              leading: Icon(Icons.system_update,
-                  color: Theme.of(context).primaryColor),
+              leading: const Icon(
+                Icons.system_update,
+              ),
               leadingPadding: const EdgeInsets.only(right: 20),
               actions: [
                 TextButton(

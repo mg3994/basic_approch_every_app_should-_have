@@ -19,6 +19,17 @@ ThemeData _appTheme(Color seedColor, bool isDarkThemeMode) {
     colorScheme: ColorScheme.fromSeed(seedColor: seedColor),
     scaffoldBackgroundColor:
         isDarkThemeMode ? const Color(0xFF303030) : const Color(0xFFf5f5f5),
+    bannerTheme: isDarkThemeMode
+        ? const MaterialBannerThemeData(backgroundColor: Colors.black)
+        : const MaterialBannerThemeData(backgroundColor: Colors.white),
+    iconTheme: IconThemeData(
+      color: isDarkThemeMode ? Colors.white : Colors.black,
+    ),
+    // textTheme: TextTheme(
+    //   : TextStyle(color: isDarkThemeMode ? Colors.white : Colors.black),
+    //   button: TextStyle(color: isDarkThemeMode ? Colors.white : Colors.black),
+    // ),
+    
     extensions: <AntinnaAppTheme>[
       AntinnaAppTheme(isDarkThemeMode: isDarkThemeMode, seedColor: seedColor),
     ],
@@ -39,7 +50,7 @@ class AntinnaAppTheme extends ThemeExtension<AntinnaAppTheme> {
         appColor1 = _adjustColor(seedColor, isDarkThemeMode, 50, 10),
         appColor2 = _adjustColor(seedColor, isDarkThemeMode, 50, 10);
 
-  static  Color _adjustColor(
+  static Color _adjustColor(
       Color color, bool isDark, int darkValue, int lightValue) {
     return isDark ? color.withAlpha(darkValue) : color.withAlpha(lightValue);
   }
