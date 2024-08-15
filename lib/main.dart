@@ -121,12 +121,12 @@ class _MyAppState extends State<MyApp> {
                 builder: (context, child) {
                   if (child != null) {
                     return SystemEventObserver(
-                      onSystemBrightnessChange: (Brightness enumBrightness) {
-                        print(enumBrightness);
-                        dependency.BlocProvider.of<ThemeModeCubit>(context)
-                            .ifThemeModeSystemThenChangeThemeMode(
-                                enumBrightness);
-                      }, //enum is dark and light
+                      // onSystemBrightnessChange: (Brightness enumBrightness) {
+                      //   print(enumBrightness);
+                      //   dependency.BlocProvider.of<ThemeModeCubit>(context)
+                      //       .ifThemeModeSystemThenChangeThemeMode(
+                      //           enumBrightness);
+                      // }, //enum is dark and light
                       // onSystemLocaleChange:
                       //     (List<Locale>? systemAllLocaleList, Locale preferedLocale) =>
                       //         BlocProvider.of<LocaleCubit>(context)
