@@ -20,16 +20,17 @@ ThemeData _appTheme(Color seedColor, bool isDarkThemeMode) {
     scaffoldBackgroundColor:
         isDarkThemeMode ? const Color(0xFF303030) : const Color(0xFFf5f5f5),
     bannerTheme: isDarkThemeMode
-        ? const MaterialBannerThemeData(backgroundColor: Colors.white)
-        : const MaterialBannerThemeData(backgroundColor: Colors.black),
+        ? const MaterialBannerThemeData(backgroundColor: Colors.black)
+        : const MaterialBannerThemeData(backgroundColor: Colors.white),
     iconTheme: IconThemeData(
-      color: isDarkThemeMode ? Colors.white : Colors.black,
+      color: isDarkThemeMode ? Colors.white70 : Colors.black26,
     ),
-    // textTheme: TextTheme(
-    //   : TextStyle(color: isDarkThemeMode ? Colors.white : Colors.black),
-    //   button: TextStyle(color: isDarkThemeMode ? Colors.white : Colors.black),
-    // ),
-
+    textTheme: TextTheme(
+      bodySmall:
+          TextStyle(color: isDarkThemeMode ? Colors.white70 : Colors.black),
+      bodyMedium:
+          TextStyle(color: isDarkThemeMode ? Colors.white70 : Colors.black54),
+    ),
     extensions: <AntinnaAppTheme>[
       AntinnaAppTheme(isDarkThemeMode: isDarkThemeMode, seedColor: seedColor),
     ],

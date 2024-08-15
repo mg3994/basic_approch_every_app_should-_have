@@ -59,9 +59,8 @@ class CodePushListener extends StatelessWidget {
           ScaffoldMessenger.maybeOf(context)
             ?..hideCurrentMaterialBanner()
             ..showMaterialBanner(MaterialBanner(
-              content: Text(
+              content: const Text(
                 "A new update is available. Restart now to apply the update.",
-                style: Theme.of(context).bannerTheme.contentTextStyle,
               ),
               leading: const Icon(
                 Icons.system_update,

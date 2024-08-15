@@ -122,12 +122,12 @@ class _MyAppState extends State<MyApp> {
                   if (child != null) {
                     return SystemEventObserver(
                       ///? no need to use systembrightness as system will change it automatically in ThemeMode.system.
-                      onSystemBrightnessChange: (Brightness enumBrightness) {
-                        print(enumBrightness);
-                        dependency.BlocProvider.of<ThemeModeCubit>(context)
-                            .ifThemeModeSystemThenChangeThemeMode(
-                                enumBrightness);
-                      }, //enum is dark and light
+                      // onSystemBrightnessChange: (Brightness enumBrightness) {
+                      //   print(enumBrightness);
+                      //   dependency.BlocProvider.of<ThemeModeCubit>(context)
+                      //       .ifThemeModeSystemThenChangeThemeMode(
+                      //           enumBrightness);
+                      // }, //enum is dark and light
                       // onSystemLocaleChange:
                       //     (List<Locale>? systemAllLocaleList, Locale preferedLocale) =>
                       //         BlocProvider.of<LocaleCubit>(context)
