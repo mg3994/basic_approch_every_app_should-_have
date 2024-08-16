@@ -1,7 +1,8 @@
 class HiveKeys {
   /// Key Cache manager box Global
-// ignore: constant_identifier_names
-  static const String CACHE_MANAGER_BOX_KEY = 'LOCAL_DB';
+
+  static const String globalkey = 'LOCAL_DB';
+  static const String encryptKey = 'AlOp7lBkcFRdJnXFkGcBHwM9I9TJMMgr';
   // ThemeMode
 
   static const String themeModeBox = 'theme_mode_box';
