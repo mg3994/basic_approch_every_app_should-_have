@@ -1,5 +1,5 @@
 import 'package:core/core.dart';
-import 'package:dependencies/dependencies.dart' as hive;
+
 import 'package:flutter/material.dart';
 
 abstract class ThemeModeLocalDataSource {
@@ -8,13 +8,13 @@ abstract class ThemeModeLocalDataSource {
 }
 
 class ThemeModeLocalDataSourceImpl implements ThemeModeLocalDataSource {
-  final hive.Box box;
+  final CacheManager _cacheManager;
 
-  ThemeModeLocalDataSourceImpl(this.box);
+  ThemeModeLocalDataSourceImpl(this._cacheManager);
 
   @override
   Future<ThemeMode?> getThemeMode() async {
-    final int? themeIndex = box.get(HiveKeys.themeModeKey);
+    final int? themeIndex = _cacheManager.read(HiveKeys.themeModeKey);
     if (themeIndex != null) {
       return ThemeMode.values[themeIndex];
     }
@@ -23,6 +23,6 @@ class ThemeModeLocalDataSourceImpl implements ThemeModeLocalDataSource {
 
   @override
   Future<void> setThemeMode(ThemeMode themeMode) async {
-    await box.put(HiveKeys.themeModeKey, themeMode.index);
+    await _cacheManager.write(HiveKeys.themeModeKey, themeMode.index);
   }
 }

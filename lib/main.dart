@@ -39,26 +39,26 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late final dependency.Box _box;
+  late final CacheManager _cacheManager;
   late final Future<void> _hiveInitialization;
 
   @override
   void initState() {
     super.initState();
+
     _hiveInitialization = _initializeHive();
   }
 
   Future<void> _initializeHive() async {
-    final hiveInitializer = HiveInitializer();
-    await hiveInitializer.init();
-    _box = await hiveInitializer.openAppBox(HiveKeys
-        .themeModeBox); //open box then put in that box also don't forget to close that
+    _cacheManager = await CacheManagerImpl.setup();
+    //open box then put in that box also don't forget to close that
   }
 
   @override
   void dispose() {
-    _box.compact(); //performance stuff file size decrease which incease performance and app sze say memory
-    _box.close();
+    _cacheManager
+        .compact(); //performance stuff file size decrease which incease performance and app runtime size say memory
+    _cacheManager.close();
 
     super.dispose();
   }
@@ -82,9 +82,9 @@ class _MyAppState extends State<MyApp> {
                   lazy: false,
                   create: (_) => ThemeModeCubit(
                       GetThemeModeUseCase(ThemeModeRepositoryImpl(
-                          ThemeModeLocalDataSourceImpl(_box))),
+                          ThemeModeLocalDataSourceImpl(_cacheManager))),
                       SetThemeModeUseCase(ThemeModeRepositoryImpl(
-                          ThemeModeLocalDataSourceImpl(_box))))),
+                          ThemeModeLocalDataSourceImpl(_cacheManager))))),
               // BlocProvider(lazy: false,create: (_) => ThemeSeedCubit()),
               // BlocProvider(lazy: false,create: (_) => LocaleCubit()),
               //  BlocProvider(
@@ -149,19 +149,22 @@ class _MyAppState extends State<MyApp> {
                   switch (settings.name) {
                     case '/':
                       return MaterialPageRoute(
-                          builder: (context) => HomePage());
+                          settings: settings, builder: (context) => HomePage());
                     case '/details':
                       return MaterialPageRoute(
+                          settings: settings,
                           builder: (context) =>
                               // ThemeModePage()
                               DetailsPage());
                     case '/settings':
                       return MaterialPageRoute(
+                          settings: settings,
                           builder: (context) => const ThemeModePage()
                           // SettingsPage()
                           );
                     default:
                       return MaterialPageRoute(
+                          settings: settings,
                           builder: (context) => NotFoundPage());
                   }
                 },
