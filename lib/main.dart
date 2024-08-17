@@ -11,7 +11,8 @@ import 'package:dependencies/dependencies.dart' as dependency
         MultiBlocProvider,
         BlocProvider,
         GlobalMaterialLocalizations,
-        GlobalWidgetsLocalizations;
+        GlobalWidgetsLocalizations,
+        GlobalCupertinoLocalizations;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:preferences/preferences.dart';
@@ -126,8 +127,6 @@ class _MyAppState extends State<MyApp> {
                 localizationsDelegates: const [
                   dependency.Aptr.delegate,
                   ...dependency.GlobalMaterialLocalizations.delegates,
-                  dependency.GlobalWidgetsLocalizations.delegate,
-                
                 ],
                 supportedLocales: dependency.Aptr.delegate.supportedLocales,
                 // localeListResolutionCallback: _localeListResolutionCallback,
@@ -136,7 +135,7 @@ class _MyAppState extends State<MyApp> {
                 builder: (context, child) {
                   if (child != null) {
                     return SystemEventObserver(
-                      ///? no need to use systembrightness as system will change it automatically in ThemeMode.system. but it s here if you wish to notify remote api call
+                      ///? no need to use systembrightness as system will change it automatically if ThemeMode.system. but it s here if you wish to notify remote api call
                       // onSystemBrightnessChange: (Brightness enumBrightness) {
                       //   print(enumBrightness);
                       //   dependency.BlocProvider.of<ThemeModeCubit>(context)

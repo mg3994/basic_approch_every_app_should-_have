@@ -42,5 +42,5 @@ extension AppLocalizationsX on BuildContext {
 
   /// Retrieves the localized notConnected string from AppLocalizationsX.
   String get notConnected => Aptr.of(this).notConnected;
-  Aptr get trans => Aptr.of(this);
+  Aptr get aptr => Aptr.of(this);
 }
