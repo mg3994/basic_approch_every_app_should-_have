@@ -1,5 +1,7 @@
 // import 'package:flutter/material.dart';
+// import 'package:dependencies/dependencies.dart'  ;
 
 // extension AppLocalizationsX on BuildContext {
-//   AppLocalizations get l10n => AppLocalizations.of(this);
+
+//   Aptr get l10n => Aptr.of(this);
 // }

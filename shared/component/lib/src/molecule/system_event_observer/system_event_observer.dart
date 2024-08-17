@@ -4,7 +4,7 @@ import 'dart:async';
 import 'dart:ui' as ui;
 
 import 'package:dependencies/dependencies.dart' as connection
-    show ConnectivityResult, Connectivity;
+    show ConnectivityResult, Connectivity, AppLocalizationsX;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/semantics.dart';
@@ -47,7 +47,8 @@ class _SystemEventObserverState extends State<SystemEventObserver>
     try {
       final connectivity = connection.Connectivity();
       final result = await connectivity.checkConnectivity();
-      yield result.first; //single distinct result only
+      yield result.firstOrNull ??
+          connection.ConnectivityResult.none; //single distinct result only
       yield* connectivity.onConnectivityChanged.expand(
         (results) => results,
       ); // Flatten the stream
@@ -167,8 +168,8 @@ class _SystemEventObserverState extends State<SystemEventObserver>
                       ),
                       child: Text(
                         (result != connection.ConnectivityResult.none)
-                            ? "Connected to ${result.name} Internet"
-                            : 'No Internet',
+                            ? context.connected(result.name.toString())
+                            : context.notConnected,
                         style: const TextStyle(color: Colors.white),
                         textAlign: TextAlign.center,
                       ),

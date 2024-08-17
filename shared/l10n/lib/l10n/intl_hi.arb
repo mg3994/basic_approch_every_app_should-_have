@@ -1,0 +1,32 @@
+{
+  "@@locale": "hi",
+  "title": "स्थानीयकरण उदाहरण",
+  "greeting": "{gender, select, male{नमस्ते श्री {name}} female{नमस्ते श्रीमती {name}} other{नमस्ते {name}}}",
+  "@greeting": {
+    "description": "लिंग के आधार पर अभिवादन संदेश"
+  },
+  "apples": "{count, plural, =0{कोई सेब नहीं} =1{एक सेब} other{{count} सेब}}",
+  "@apples": {
+    "description": "सेब की संख्या"
+  },
+  "price": "मूल्य {value, currency, ::currency/INR} है",
+  "@price": {
+    "description": "INR में मूल्य"
+  },
+  "date": "आज की तारीख {date, date, ::yMMMMd} है",
+  "@date": {
+    "description": "स्वरूपित तारीख"
+  },
+  "welcome": "हमारे एप्लिकेशन में आपका स्वागत है, {name}!",
+  "@welcome": {
+    "description": "नाम के साथ स्वागत संदेश"
+  },
+  "connected": "कनेक्टेड: {connectionType}",
+  "@connected": {
+    "description": "यह संदेश तब दिखाया जाता है जब डिवाइस किसी नेटवर्क से जुड़ा हो। 'connectionType' कनेक्शन के प्रकार (जैसे, वाई-फाई, मोबाइल डेटा) को दर्शाता है।"
+  },
+  "notConnected": "कनेक्शन नहीं है",
+  "@notConnected": {
+    "description": "यह संदेश तब दिखाया जाता है जब डिवाइस किसी भी नेटवर्क से जुड़ा न हो।"
+  }
+}

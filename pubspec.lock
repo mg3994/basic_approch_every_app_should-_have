@@ -239,6 +239,11 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.0"
+  flutter_localizations:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -321,6 +326,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.9.0"
+  l10n:
+    dependency: transitive
+    description:
+      path: "shared/l10n"
+      relative: true
+    source: path
+    version: "0.0.1"
   leak_tracker:
     dependency: transitive
     description:
@@ -653,5 +665,5 @@ packages:
     source: hosted
     version: "3.1.2"
 sdks:
-  dart: ">=3.6.0-128.0.dev <4.0.0"
+  dart: ">=3.6.0-149.3.beta <4.0.0"
   flutter: ">=3.22.0"

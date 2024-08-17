@@ -1,0 +1,33 @@
+{
+  "@@locale": "en",
+  "title": "Localization Example",
+  "greeting": "{gender, select, male{Hello Mr. {name}} female{Hello Ms. {name}} other{Hello {name}}}",
+  "@greeting": {
+    "description": "Greeting message based on gender"
+  },
+  "apples": "{count, plural, =0{No apples} =1{One apple} other{{count} apples}}",
+  "@apples": {
+    "description": "Number of apples"
+  },
+  "price": "The price is {value, currency, ::currency/USD}",
+  "@price": {
+    "description": "Price in USD"
+  },
+  "date": "Today's date is {date, date, ::yMMMMd}",
+  "@date": {
+    "description": "Formatted date"
+  },
+  "welcome": "Welcome to our application, {name}!",
+  "@welcome": {
+    "description": "Welcome message with name"
+  },
+  "connected": "Connected: {connectionType}",
+  "@connected": {
+    "description": "Message shown when the app is connected to the internet. 'connectionType' is the type of network connection (e.g., Wi-Fi, Mobile Data)."
+  },
+  "notConnected": "Offline",
+  "@notConnected": {
+    "description": "Message shown when the app is offline."
+  }
+
+}

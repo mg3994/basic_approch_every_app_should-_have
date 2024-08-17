@@ -5,7 +5,13 @@ import 'package:code_push/features/code_push/domain/usecases/perform_update.dart
 import 'package:component/component.dart' show SystemEventObserver;
 import 'package:core/core.dart';
 
-import 'package:dependencies/dependencies.dart' as dependency;
+import 'package:dependencies/dependencies.dart' as dependency
+    show
+        Aptr,
+        MultiBlocProvider,
+        BlocProvider,
+        GlobalMaterialLocalizations,
+        GlobalWidgetsLocalizations;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:preferences/preferences.dart';
@@ -117,6 +123,15 @@ class _MyAppState extends State<MyApp> {
                 //     BlocProvider.of<ThemeSeedCubit>(context, listen: true).state.seedColor), //color as int is stored in sf
                 // darkTheme: appDarkTheme(
                 //     BlocProvider.of<ThemeSeedCubit>(context, listen: true).state.seedColor),
+                localizationsDelegates: const [
+                  dependency.Aptr.delegate,
+                  ...dependency.GlobalMaterialLocalizations.delegates,
+                  dependency.GlobalWidgetsLocalizations.delegate,
+                
+                ],
+                supportedLocales: dependency.Aptr.delegate.supportedLocales,
+                // localeListResolutionCallback: _localeListResolutionCallback,
+                locale: dependency.Aptr.delegate.supportedLocales[1],
 
                 builder: (context, child) {
                   if (child != null) {
@@ -181,8 +196,6 @@ void allowFirstFrame() {
   }
 }
 
-
-
 // final _setUpBlocProvider = [
 //   BlocProvider(create: (context) {
 //     final codePushClient = const CodePushClientImpl(),
@@ -192,3 +205,13 @@ void allowFirstFrame() {
 //     return CodePushCubit(checkForUpdateUseCase, performUpdateUseCase)..init();
 //   })
 // ];
+
+Locale _localeListResolutionCallback(
+    List<Locale>? locales, Iterable<Locale> supportedLocales) {
+  for (Locale locale in locales ?? []) {
+    if (supportedLocales.contains(locale)) {
+      return locale;
+    }
+  }
+  return supportedLocales.first; // Fallback locale
+}
