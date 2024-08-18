@@ -1,4 +1,8 @@
 # antinna
+```bash
+melos clean
+melos bootstrap
+```
 
 A new Flutter project.
 # My Idea 

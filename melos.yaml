@@ -1,0 +1,5 @@
+name: antinna
+packages:
+  - core
+  - features/*
+  - shared/*
