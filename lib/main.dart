@@ -80,7 +80,9 @@ class _MyAppState extends State<MyApp> {
           }
 
           if (snapshot.hasError) {
-            return const Center(child: Text('Error initializing Hive'));
+            return const Center(
+                child: Text(
+                    'Error initializing Hive')); // TODO: add a seprate Widget no need directionality type because if no memory this is for sure
           }
 
           return dependency.MultiBlocProvider(

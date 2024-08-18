@@ -1,3 +1,4 @@
+import 'package:component/component.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -121,14 +122,32 @@ class HomePage extends StatelessWidget {
 class DetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('Details Page'),
-      // ),
-      body: Center(
-        child: Text('This is the Details Page'),
-      ),
-    );
+    return ALayoutBuilder(builder: (
+      BuildContext context,
+      Size constrants,
+      bool isTablet,
+      bool isLandscape,
+    ) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Details Page'),
+        ),
+        body: Center(
+          child: Text('''This is the Details Page \n
+          
+          "Aspect Ratio" => ${constrants.aspectRatio} \n
+          "Height" => ${constrants.height} \n
+          "Width" => ${constrants.width} \n
+          "Longest Side" => ${constrants.longestSide} \n
+          "Shortest Side" => ${constrants.shortestSide} \n
+          "Is Finite" => ${constrants.isFinite} \n
+          "IS Infinite" => ${constrants.isInfinite} \n
+          "Is Tablet View" => $isTablet \n
+          "Is Landscape View" => $isLandscape \n
+          '''),
+        ),
+      );
+    });
   }
 }
 

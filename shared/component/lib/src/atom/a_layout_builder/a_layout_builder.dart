@@ -8,6 +8,7 @@ typedef ALayoutWidgetBuilder = Widget Function(
   bool isLandscape,
 );
 
+///Much better then orientationBuilder
 class ALayoutBuilder extends StatelessWidget {
   const ALayoutBuilder({
     super.key,
