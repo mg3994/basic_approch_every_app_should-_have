@@ -14,7 +14,7 @@ class CodePushRepositoryImpl implements CodePushRepository {
       final updateAvailable = await _client.checkForUpdate();
       return Right(updateAvailable);
     } catch (e) {
-      return const Left(ServerFailure('Failed to check for updates'));
+      return Left(ServerFailure('Failed to check for updates: $e'));
     }
   }
 
@@ -25,7 +25,7 @@ class CodePushRepositoryImpl implements CodePushRepository {
 
       return Right(isNeedRestart);
     } catch (e) {
-      return const Left(ServerFailure('Failed to perform update'));
+      return Left(ServerFailure('Failed to perform update: $e'));
     }
   }
 }

@@ -25,7 +25,7 @@
   "@connected": {
     "description": "Message shown when the app is connected to the internet. 'connectionType' is the type of network connection (e.g., Wi-Fi, Mobile Data)."
   },
-  "notConnected": "Offline",
+  "notConnected": "Not Connected",
   "@notConnected": {
     "description": "Message shown when the app is offline."
   }

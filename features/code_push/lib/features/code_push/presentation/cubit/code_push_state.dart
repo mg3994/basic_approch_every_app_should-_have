@@ -31,8 +31,26 @@ final class CodePushNeedRestart extends CodePushState {
 }
 
 @Equatable()
-final class CodePushError extends CodePushState {
-  final String message;
 
-  const CodePushError(this.message);
+///   if (state is CodePushError) {
+///  if (state.failure is CacheFailure) {
+///     final CacheFailure c = state.failure as CacheFailure;
+///     c.message;
+///   }
+/// }
+/// or
+///     if (state is CodePushError) {
+///   switch (state.failure ) {
+///     case is CacheFailure:
+
+///       break;
+///     default:
+///   }
+
+/// }
+final class CodePushError extends CodePushState {
+  final Failure
+      failure; // falure is here because i want to listen and as per message if there build Localized Translted error way/system Text output
+
+  const CodePushError(this.failure);
 }

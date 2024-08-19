@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 /// - Dependency Injection
 /// - Routing
 ///
-abstract class BaseModule {
+abstract interface class BaseModule {
   /// Make routes from your module
   ///
   /// Example use:

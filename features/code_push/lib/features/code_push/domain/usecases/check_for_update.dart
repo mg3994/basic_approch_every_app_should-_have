@@ -2,7 +2,7 @@ import 'package:core/core.dart';
 import 'package:dependencies/dependencies.dart';
 import '../repositories/code_push_repository.dart';
 
-class CheckForUpdateUseCase extends UseCase<bool, NoParams> {
+class CheckForUpdateUseCase implements UseCase<bool, NoParams> {
   final CodePushRepository repository;
 
 const CheckForUpdateUseCase(this.repository);

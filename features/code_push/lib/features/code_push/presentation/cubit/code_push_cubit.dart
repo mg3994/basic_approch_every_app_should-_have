@@ -1,4 +1,5 @@
 // import 'package:bloc/bloc.dart';
+import 'package:core/core.dart';
 import 'package:core/usecases/usecase.dart';
 import 'package:dependencies/dependencies.dart';
 
@@ -74,7 +75,7 @@ class CodePushCubit extends Cubit<CodePushState> {
     final result = await checkForUpdateUseCase(
         const NoParams()); // isNewPatchAvailableForDownload()
     result.fold(
-      (failure) => emit(CodePushError(failure.message)),
+      (failure) => emit(CodePushError(failure)),
       (updateAvailable) =>
           updateAvailable ? _updateApp() : emit(const CodePushUpToDate()),
     );
@@ -85,7 +86,7 @@ class CodePushCubit extends Cubit<CodePushState> {
     final result = await performUpdateUseCase(
         const NoParams()); //downloadUpdateIfAvailable() then return true ; else error then false ;//an d//isNewPatchReadyToInstall()
     result.fold(
-      (failure) => emit(CodePushError(failure.message)),
+      (failure) => emit(CodePushError(failure)),
       (isNeedRestart) => isNeedRestart
           ? emit(const CodePushNeedRestart())
           : emit(const CodePushUpToDate()),

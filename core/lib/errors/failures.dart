@@ -45,24 +45,39 @@
 
 import 'package:dependencies/dependencies.dart';
 
-@Equatable()
-abstract class Failure {
+@pragma('antinna:keep-to-string-in-subtypes by remind')
+// @Equatable(
+//     stringify:
+//         true) // TODO: // stringify for above use case //comment this here but apply this in all subtypes
+abstract interface class Failure {
+  factory Failure([var message]) => _Failure(message);
+}
+
+/// Default implementation of [Failure] which carries a message.
+@Equatable(stringify: true) // stringify for above use case
+class _Failure implements Failure {
+  final dynamic message;
+
+  const _Failure([this.message]);
+}
+
+@Equatable(stringify: true) // stringify for above use case
+class ServerFailure implements Failure {
+  /// A message describing the format error.
   final String message;
-
-  const Failure(this.message);
+  const ServerFailure([this.message = ""]);
 }
 
-@Equatable()
-class ServerFailure extends Failure {
-  const ServerFailure(super.message);
+@Equatable(stringify: true) // stringify for above use case
+class CacheFailure implements Failure {
+  /// A message describing the format error.
+  final String message;
+  const CacheFailure([this.message = ""]);
 }
 
-@Equatable()
-class CacheFailure extends Failure {
-  const CacheFailure(super.message);
-}
-
-@Equatable()
-class NetworkFailure extends Failure {
-  const NetworkFailure(super.message);
+@Equatable(stringify: true) // stringify for above use case
+class NetworkFailure implements Failure {
+  /// A message describing the format error.
+  final String message;
+  const NetworkFailure([this.message = ""]);
 }

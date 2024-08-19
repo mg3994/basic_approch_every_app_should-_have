@@ -4,10 +4,11 @@ import 'dart:async';
 import 'dart:ui' as ui;
 
 import 'package:dependencies/dependencies.dart' as connection
-    show ConnectivityResult, Connectivity, AppLocalizationsX;
+    show ConnectivityResult, Connectivity;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/semantics.dart';
+import 'package:core/core.dart' show AppLocalizationsX;
 
 import '../../atom/atom.dart' show BannerHost;
 
@@ -168,8 +169,8 @@ class _SystemEventObserverState extends State<SystemEventObserver>
                       ),
                       child: Text(
                         (result != connection.ConnectivityResult.none)
-                            ? context.connected(result.name.toString())
-                            : context.notConnected,
+                            ? context.l10n.connected(result.name.toString())
+                            : context.l10n.notConnected,
                         style: const TextStyle(color: Colors.white),
                         textAlign: TextAlign.center,
                       ),

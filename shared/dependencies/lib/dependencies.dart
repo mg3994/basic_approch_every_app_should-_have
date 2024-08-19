@@ -3,8 +3,7 @@
 /// More dartdocs go here.
 library dependencies;
 
-import 'package:dependencies/dependencies.dart';
-import 'package:flutter/widgets.dart';
+
 
 // ?# dependencies:
 export 'package:intl/intl.dart';
@@ -33,14 +32,4 @@ export 'package:l10n/l10n.dart';
 // ?# self_dependencies:
 export 'src/dependencies_base.dart';
 
-extension AppLocalizationsX on BuildContext {
-  String get title => Aptr.of(this).title;
 
-  /// Retrieves the localized connected string from AppLocalizationsX.
-  String connected(Object connectionType) =>
-      Aptr.of(this).connected(connectionType);
-
-  /// Retrieves the localized notConnected string from AppLocalizationsX.
-  String get notConnected => Aptr.of(this).notConnected;
-  Aptr get aptr => Aptr.of(this);
-}

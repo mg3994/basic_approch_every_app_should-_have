@@ -14,7 +14,7 @@ import 'package:dependencies/dependencies.dart';
 /// * Reading cache
 /// * Writing cache
 /// * Deleting cache
-abstract class CacheManager {
+abstract interface class CacheManager {
   /// Return value from a [key] Param
   ///
   dynamic read(String key);
