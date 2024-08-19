@@ -14,7 +14,7 @@ class CodePushRepositoryImpl implements CodePushRepository {
       final updateAvailable = await _client.checkForUpdate();
       return Right(updateAvailable);
     } catch (e) {
-      return Left(ServerFailure('Failed to check for updates: $e'));
+      return const Left(ServerFailure('Failed to check for updates:'));
     }
   }
 
@@ -25,7 +25,7 @@ class CodePushRepositoryImpl implements CodePushRepository {
 
       return Right(isNeedRestart);
     } catch (e) {
-      return Left(ServerFailure('Failed to perform update: $e'));
+      return const Left(ServerFailure('Failed to perform update:'));
     }
   }
 }
@@ -43,12 +43,14 @@ final class CodePushClientImpl extends CodePushClient {
   @override
   checkForUpdate() async {
     await Future.delayed(const Duration(seconds: 2));
+    // throw ServerException();
     return true;
   }
 
   @override
   performUpdate() async {
     await Future.delayed(const Duration(seconds: 4));
+    // throw ServerException();
     //download
     //should install now
     return true; //if true then it need restart else all done already

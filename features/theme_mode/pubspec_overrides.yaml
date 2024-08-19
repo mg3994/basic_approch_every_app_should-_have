@@ -1,0 +1,8 @@
+# melos_managed_dependency_overrides: core,dependencies,l10n
+dependency_overrides:
+  core:
+    path: ..\\..\\core
+  dependencies:
+    path: ..\\..\\shared\\dependencies
+  l10n:
+    path: ..\\..\\shared\\l10n

@@ -51,33 +51,42 @@ import 'package:dependencies/dependencies.dart';
 //         true) // TODO: // stringify for above use case //comment this here but apply this in all subtypes
 abstract interface class Failure {
   factory Failure([var message]) => _Failure(message);
+  String? get message;
 }
 
 /// Default implementation of [Failure] which carries a message.
 @Equatable(stringify: true) // stringify for above use case
 class _Failure implements Failure {
-  final dynamic message;
+  final dynamic _message;
 
-  const _Failure([this.message]);
+  const _Failure([this._message]);
+  @override
+  String? get message => _message.toString();
 }
 
 @Equatable(stringify: true) // stringify for above use case
 class ServerFailure implements Failure {
   /// A message describing the format error.
-  final String message;
-  const ServerFailure([this.message = ""]);
+  final String _message;
+  const ServerFailure([this._message = ""]);
+  @override
+  String? get message => _message;
 }
 
 @Equatable(stringify: true) // stringify for above use case
 class CacheFailure implements Failure {
   /// A message describing the format error.
-  final String message;
-  const CacheFailure([this.message = ""]);
+  final String _message;
+  const CacheFailure([this._message = ""]);
+  @override
+  String? get message => _message;
 }
 
 @Equatable(stringify: true) // stringify for above use case
 class NetworkFailure implements Failure {
   /// A message describing the format error.
-  final String message;
-  const NetworkFailure([this.message = ""]);
+  final String _message;
+  const NetworkFailure([this._message = ""]);
+  @override
+  String? get message => _message;
 }

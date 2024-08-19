@@ -27,7 +27,7 @@ dependencies:
   isar_flutter_libs: ^4.0.0-dev.14
 
   l10n:
-    path: ../l10n
+    # path: ../l10n
 
 dev_dependencies:
   bloc_test: ^9.1.7

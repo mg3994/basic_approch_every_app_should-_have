@@ -1,7 +1,7 @@
 name: component
 description: "A new Flutter package project."
 version: 0.0.1
-homepage:
+# homepage:
 publish_to: "none"
 
 environment:
@@ -12,9 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
   dependencies:
-    path: ../dependencies
+    # path: ../dependencies
   core:
-    path: ../../core
+    # path: ../../core
 
 dev_dependencies:
   flutter_test:

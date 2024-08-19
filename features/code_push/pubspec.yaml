@@ -1,7 +1,7 @@
 name: code_push
 description: "A new Flutter package project."
 version: 0.0.1
-homepage:
+# homepage:
 publish_to: "none"
 environment:
   sdk: ^3.6.0-128.0.dev

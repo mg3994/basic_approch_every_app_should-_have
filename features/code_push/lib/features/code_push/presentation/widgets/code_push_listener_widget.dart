@@ -38,8 +38,7 @@
 //////////////////?
 // import 'dart:isolate';
 
-import 'dart:async';
-
+import 'package:core/core.dart';
 import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
 
@@ -62,7 +61,17 @@ class CodePushListener extends StatelessWidget {
         //   print(Theme.of(context).brightness);
         //   print(Theme.of(context).textTheme.bodyMedium?.color.toString());
         // });
-
+        if (state is CodePushError) {
+          switch (state.failure) {
+            case ServerFailure _:
+              ScaffoldMessenger.maybeOf(context)
+                ?..hideCurrentSnackBar()
+                ..showSnackBar(
+                    SnackBar(content: Text(state.failure.message.toString())));
+              break;
+            default:
+          }
+        }
         if (state is CodePushNeedRestart) {
           ScaffoldMessenger.maybeOf(context)
             ?..hideCurrentMaterialBanner()
