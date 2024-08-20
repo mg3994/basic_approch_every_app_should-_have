@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 const double _kDefaultAntinnaIndicatorRadius = 35.0;
 
 /// A custom activity indicator widget.
-class AntinnaActivityIndicator extends StatefulWidget {
+final class AntinnaActivityIndicator extends StatefulWidget {
   /// Creates an animated activity indicator.
   const AntinnaActivityIndicator({
     super.key,
@@ -60,7 +60,7 @@ class AntinnaActivityIndicator extends StatefulWidget {
       _AntinnaActivityIndicatorState();
 }
 
-class _AntinnaActivityIndicatorState extends State<AntinnaActivityIndicator>
+final class _AntinnaActivityIndicatorState extends State<AntinnaActivityIndicator>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
@@ -123,7 +123,7 @@ class _AntinnaActivityIndicatorState extends State<AntinnaActivityIndicator>
 const List<int> _kAlphaValues = <int>[47, 47, 47, 47, 72, 97, 122, 147];
 
 /// Custom painter for the AntinnaActivityIndicator.
-class _AntinnaActivityIndicatorPainter extends CustomPainter {
+final class _AntinnaActivityIndicatorPainter extends CustomPainter {
   _AntinnaActivityIndicatorPainter({
     required this.bubbleRadius,
     required this.position,

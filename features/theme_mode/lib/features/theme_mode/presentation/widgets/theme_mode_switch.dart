@@ -2,7 +2,7 @@ import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:theme_mode/theme_mode.dart';
 
-class ThemeSwitch extends StatelessWidget {
+final class ThemeSwitch extends StatelessWidget {
   const ThemeSwitch({super.key});
 
   @override

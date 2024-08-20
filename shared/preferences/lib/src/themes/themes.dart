@@ -38,7 +38,7 @@ ThemeData _appTheme(Color seedColor, bool isDarkThemeMode) {
   );
 }
 
-class AntinnaAppTheme extends ThemeExtension<AntinnaAppTheme> {
+final class AntinnaAppTheme extends ThemeExtension<AntinnaAppTheme> {
   final bool isDarkThemeMode;
   final Color seedColor;
   final Color appColor0;

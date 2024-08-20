@@ -3,7 +3,7 @@ import 'package:dependencies/dependencies.dart';
 
 import '../../domain/repositories/code_push_repository.dart';
 
-class CodePushRepositoryImpl implements CodePushRepository {
+final class CodePushRepositoryImpl implements CodePushRepository {
   final CodePushClient _client;
 
   const CodePushRepositoryImpl(this._client);
@@ -31,8 +31,7 @@ class CodePushRepositoryImpl implements CodePushRepository {
 }
 
 //dummy class for
-
-abstract class CodePushClient {
+abstract interface class CodePushClient {
   const CodePushClient();
   checkForUpdate();
   performUpdate();
@@ -44,13 +43,15 @@ final class CodePushClientImpl extends CodePushClient {
   checkForUpdate() async {
     await Future.delayed(const Duration(seconds: 2));
     // throw ServerException();
+    // throw SocketException();
+
     return true;
   }
 
   @override
   performUpdate() async {
     await Future.delayed(const Duration(seconds: 4));
-    // throw ServerException();
+    // throw ServerException(); Execption
     //download
     //should install now
     return true; //if true then it need restart else all done already

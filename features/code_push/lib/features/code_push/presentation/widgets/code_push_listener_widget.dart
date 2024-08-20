@@ -44,7 +44,7 @@ import 'package:flutter/material.dart';
 
 import '../cubit/code_push_cubit.dart';
 
-class CodePushListener extends StatelessWidget {
+final class CodePushListener extends StatelessWidget {
   const CodePushListener({super.key, required this.child});
   final Widget child;
 

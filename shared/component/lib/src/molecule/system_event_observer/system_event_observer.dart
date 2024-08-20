@@ -12,7 +12,7 @@ import 'package:core/core.dart' show AppLocalizationsX;
 
 import '../../atom/atom.dart' show BannerHost;
 
-class SystemEventObserver extends StatefulWidget {
+final class SystemEventObserver extends StatefulWidget {
   const SystemEventObserver({
     super.key,
     required this.child,
@@ -39,7 +39,7 @@ class SystemEventObserver extends StatefulWidget {
   State<SystemEventObserver> createState() => _SystemEventObserverState();
 }
 
-class _SystemEventObserverState extends State<SystemEventObserver>
+final class _SystemEventObserverState extends State<SystemEventObserver>
     with WidgetsBindingObserver {
   late final _connectivity = _connectivityStream();
   late final StreamSubscription<connection.ConnectivityResult>
@@ -159,18 +159,27 @@ class _SystemEventObserverState extends State<SystemEventObserver>
               return BannerHost(
                   hideBanner: result != connection.ConnectivityResult.none,
                   banner: Material(
-                    color: (result != connection.ConnectivityResult.none)
-                        ? Colors.green
-                        : Colors.red,
+                    color: switch (result) {
+                      connection.ConnectivityResult.none => Colors.red,
+                      _ => Colors.green,
+                    },
+                    // (result != connection.ConnectivityResult.none)
+                    //     ? Colors.green
+                    //     : Colors.red,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                         vertical: 4.0,
                         horizontal: 12.0,
                       ),
                       child: Text(
-                        (result != connection.ConnectivityResult.none)
-                            ? context.l10n.connected(result.name.toString())
-                            : context.l10n.notConnected,
+                        switch (result) {
+                          connection.ConnectivityResult.none =>
+                            context.l10n.notConnected,
+                          _ => context.l10n.connected(result.name.toString())
+                        },
+                        // (result != connection.ConnectivityResult.none)
+                        //     ? context.l10n.connected(result.name.toString())
+                        //     : context.l10n.notConnected,
                         style: const TextStyle(color: Colors.white),
                         textAlign: TextAlign.center,
                       ),

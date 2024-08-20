@@ -6,7 +6,7 @@ part of 'code_push_cubit.dart';
 // final class CodePushInitial extends CodePushState {}
 
 @Equatable()
-abstract class CodePushState {
+sealed class CodePushState {
   const CodePushState();
 }
 

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../domain/repositories/theme_mode_repository.dart';
 import '../datasources/local/theme_mode_local_data_source.dart';
 
-class ThemeModeRepositoryImpl implements ThemeModeRepository {
+final class ThemeModeRepositoryImpl implements ThemeModeRepository {
   final ThemeModeLocalDataSource localDataSource;
 
   ThemeModeRepositoryImpl(this.localDataSource);

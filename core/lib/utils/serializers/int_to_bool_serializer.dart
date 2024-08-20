@@ -1,6 +1,6 @@
 import 'package:dependencies/dependencies.dart' show JsonConverter;
 
-class IntToBoolSerializer extends JsonConverter<bool, int> {
+final class IntToBoolSerializer extends JsonConverter<bool, int> {
   const IntToBoolSerializer();
 
   @override

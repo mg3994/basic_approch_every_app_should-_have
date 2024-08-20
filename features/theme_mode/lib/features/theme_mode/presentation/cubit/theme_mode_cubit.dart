@@ -7,7 +7,7 @@ import '../../domain/usecases/set_theme_mode_usecase.dart';
 
 part 'theme_mode_state.dart';
 
-class ThemeModeCubit extends Cubit<ThemeMode> {
+final class ThemeModeCubit extends Cubit<ThemeMode> {
   final GetThemeModeUseCase getThemeModeUseCase;
   final SetThemeModeUseCase setThemeModeUseCase;
   ThemeModeCubit(this.getThemeModeUseCase, this.setThemeModeUseCase)

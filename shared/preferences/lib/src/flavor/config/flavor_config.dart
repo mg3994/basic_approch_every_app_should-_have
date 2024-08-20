@@ -1,19 +1,8 @@
 part of '../config.dart';
 
-enum UrlSchema { http, https }
 
-extension BaseUrlSchemaX on UrlSchema {
-  String toUrlSchema() {
-    switch (this) {
-      case UrlSchema.http:
-        return 'http';
-      case UrlSchema.https:
-        return 'https';
-    }
-  }
-}
 
-abstract class FlavorConfig {
+abstract interface class FlavorConfig {
   const FlavorConfig._internal(this.appName, this.baseUrl, this.flavor);
 
   final String appName;

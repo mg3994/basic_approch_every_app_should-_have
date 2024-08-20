@@ -8,6 +8,6 @@ abstract interface class UseCase<Type, Params> {
 }
 
 @Equatable()
-class NoParams {
+final class NoParams {
   const NoParams();
 }

@@ -56,7 +56,7 @@ abstract interface class Failure {
 
 /// Default implementation of [Failure] which carries a message.
 @Equatable(stringify: true) // stringify for above use case
-class _Failure implements Failure {
+final class _Failure implements Failure {
   final dynamic _message;
 
   const _Failure([this._message]);
@@ -65,7 +65,7 @@ class _Failure implements Failure {
 }
 
 @Equatable(stringify: true) // stringify for above use case
-class ServerFailure implements Failure {
+final class ServerFailure implements Failure {
   /// A message describing the format error.
   final String _message;
   const ServerFailure([this._message = ""]);
@@ -74,7 +74,7 @@ class ServerFailure implements Failure {
 }
 
 @Equatable(stringify: true) // stringify for above use case
-class CacheFailure implements Failure {
+final class CacheFailure implements Failure {
   /// A message describing the format error.
   final String _message;
   const CacheFailure([this._message = ""]);
@@ -83,7 +83,7 @@ class CacheFailure implements Failure {
 }
 
 @Equatable(stringify: true) // stringify for above use case
-class NetworkFailure implements Failure {
+final class NetworkFailure implements Failure {
   /// A message describing the format error.
   final String _message;
   const NetworkFailure([this._message = ""]);

@@ -12,7 +12,7 @@ part of '../config.dart';
 //   final flavor = Flavor.production;
 // }
 
-class _ProductionFlavorConfig extends FlavorConfig {
+final class _ProductionFlavorConfig extends FlavorConfig {
   const _ProductionFlavorConfig()
       : super._internal(
             'Antinna', 'https://prod.example.com', Flavor.production);

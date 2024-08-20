@@ -12,7 +12,7 @@ part of '../config.dart';
 //   @override
 //   final flavor = Flavor.staging;
 // }
-class _StagingFlavorConfig extends FlavorConfig {
+final class _StagingFlavorConfig extends FlavorConfig {
   const _StagingFlavorConfig()
       : super._internal(
             "[STG] Antinna", 'https://stag.example.com', Flavor.staging);

@@ -9,7 +9,7 @@ typedef ALayoutWidgetBuilder = Widget Function(
 );
 
 ///Much better then orientationBuilder
-class ALayoutBuilder extends StatelessWidget {
+final class ALayoutBuilder extends StatelessWidget {
   const ALayoutBuilder({
     super.key,
     required this.builder,

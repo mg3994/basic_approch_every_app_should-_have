@@ -2,7 +2,7 @@ import 'package:core/core.dart';
 import 'package:dependencies/dependencies.dart';
 import '../repositories/code_push_repository.dart';
 
-class PerformUpdateUseCase implements UseCase<void, NoParams> {
+final class PerformUpdateUseCase implements UseCase<void, NoParams> {
   final CodePushRepository repository;
 
   const PerformUpdateUseCase(this.repository);

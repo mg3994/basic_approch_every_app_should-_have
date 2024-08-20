@@ -40,7 +40,7 @@ abstract interface class CacheManager {
 
 /// Implementation of [CacheManager] which uses `PathProvider` and `dart.io`
 /// to persist and retrieve state changes from the local device.
-class CacheManagerImpl implements CacheManager {
+final class CacheManagerImpl implements CacheManager {
   static CacheManagerImpl? _singleton;
   static late Box _box;
 

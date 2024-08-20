@@ -1,6 +1,6 @@
 import 'dart:async';
 
-class ErrorAbsorberTransformer<T> extends StreamTransformerBase<T, T> {
+final class ErrorAbsorberTransformer<T> extends StreamTransformerBase<T, T> {
   final _controller = StreamController<T>.broadcast();
   ErrorAbsorberTransformer();
 

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../repositories/theme_mode_repository.dart';
 
-class GetThemeModeUseCase implements UseCase<ThemeMode, NoParams> {
+final class GetThemeModeUseCase implements UseCase<ThemeMode, NoParams> {
   final ThemeModeRepository repository;
 
   GetThemeModeUseCase(this.repository);

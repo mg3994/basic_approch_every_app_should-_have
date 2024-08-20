@@ -7,7 +7,7 @@ abstract interface class ThemeModeLocalDataSource {
   Future<void> setThemeMode(ThemeMode themeMode);
 }
 
-class ThemeModeLocalDataSourceImpl implements ThemeModeLocalDataSource {
+final class ThemeModeLocalDataSourceImpl implements ThemeModeLocalDataSource {
   final CacheManager _cacheManager;
 
   ThemeModeLocalDataSourceImpl(this._cacheManager);

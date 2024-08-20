@@ -34,7 +34,7 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
+final class MyApp extends StatefulWidget {
   const MyApp({
     super.key,
     //  required this.box
@@ -45,7 +45,7 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+final class _MyAppState extends State<MyApp> {
   late final CacheManager _cacheManager;
   late final Future<void> _hiveInitialization;
 

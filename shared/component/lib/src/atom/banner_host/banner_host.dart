@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-class BannerHost extends StatefulWidget {
+final class BannerHost extends StatefulWidget {
   const BannerHost({
     super.key,
     required this.hideBanner,
@@ -20,7 +20,7 @@ class BannerHost extends StatefulWidget {
   State<BannerHost> createState() => BannerHostState();
 }
 
-class BannerHostState extends State<BannerHost>
+final class BannerHostState extends State<BannerHost>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _animation;
@@ -82,7 +82,7 @@ class BannerHostState extends State<BannerHost>
 
 enum _BannerHostWidgetId { child, banner }
 
-class _BannerHostDelegate extends MultiChildLayoutDelegate {
+final class _BannerHostDelegate extends MultiChildLayoutDelegate {
   _BannerHostDelegate(this._animation) : super(relayout: _animation);
 
   final Animation<double> _animation;

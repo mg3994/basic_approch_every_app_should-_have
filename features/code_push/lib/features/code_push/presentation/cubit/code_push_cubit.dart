@@ -52,7 +52,7 @@ part 'code_push_state.dart';
 //   }
 // }
 
-class CodePushCubit extends Cubit<CodePushState> {
+final class CodePushCubit extends Cubit<CodePushState> {
   final CheckForUpdateUseCase checkForUpdateUseCase;
   final PerformUpdateUseCase performUpdateUseCase;
 

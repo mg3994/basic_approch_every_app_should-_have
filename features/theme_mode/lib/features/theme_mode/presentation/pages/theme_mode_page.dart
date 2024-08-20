@@ -4,7 +4,7 @@ import 'package:theme_mode/theme_mode.dart';
 
 import '../widgets/theme_mode_switch.dart';
 
-class ThemeModePage extends StatelessWidget {
+final class ThemeModePage extends StatelessWidget {
   const ThemeModePage({super.key});
 
   @override
