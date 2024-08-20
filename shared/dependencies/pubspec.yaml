@@ -25,6 +25,8 @@ dependencies:
   # hive: ^4.0.0-dev.2
   path_provider: ^2.1.4
   isar_flutter_libs: ^4.0.0-dev.14
+  _macros:
+    sdk: dart
 
   l10n:
     # path: ../l10n
