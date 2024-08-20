@@ -1,2 +1,2 @@
-# melos_managed_dependency_overrides: core
-{}
+# melos_managed_dependency_overrides: core,dependencies,l10n
+{dependency_overrides: {dependencies: {path: ..\\dependencies}, l10n: {path: ..\\l10n}}}

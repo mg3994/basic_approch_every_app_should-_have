@@ -1,3 +1,4 @@
+// @dart=3.6
 import 'package:code_push/code_push.dart';
 
 import 'package:code_push/features/code_push/domain/usecases/check_for_update.dart';
@@ -6,13 +7,7 @@ import 'package:component/component.dart' show SystemEventObserver;
 import 'package:core/core.dart';
 
 import 'package:dependencies/dependencies.dart' as dependency
-    show
-        Aptr,
-        MultiBlocProvider,
-        BlocProvider,
-        GlobalMaterialLocalizations,
-        GlobalWidgetsLocalizations,
-        GlobalCupertinoLocalizations;
+    show Aptr, MultiBlocProvider, BlocProvider, GlobalMaterialLocalizations;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:preferences/preferences.dart';
