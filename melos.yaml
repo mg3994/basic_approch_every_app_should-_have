@@ -1,5 +1,22 @@
 name: antinna
+# Repository
+repository: https://github.com/mg3994/basic_approach_every_app_should_have
+
+
 packages:
   - core
   - features/*
   - shared/*
+
+# Scripts to automate tasks
+scripts:
+   # Localization code generation for the l10n package
+  l10n:
+    run: |
+      melos exec --scope=l10n "flutter pub run intl_utils:generate"
+# Package dependencies
+
+ignore:
+  # e.g. ignore example apps
+  - '**/example'
+  - 'build'
