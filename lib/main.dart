@@ -1,4 +1,3 @@
-// @dart=3.6
 import 'package:code_push/code_push.dart';
 
 import 'package:code_push/features/code_push/domain/usecases/check_for_update.dart';
@@ -127,7 +126,7 @@ final class _MyAppState extends State<MyApp> {
                 ],
                 supportedLocales: dependency.Aptr.delegate.supportedLocales,
                 // localeListResolutionCallback: _localeListResolutionCallback,
-                locale: dependency.Aptr.delegate.supportedLocales[1],
+                // locale: dependency.Aptr.delegate.supportedLocales[1],
 
                 builder: (context, child) {
                   if (child != null) {
