@@ -11,7 +11,7 @@ command:
   bootstrap:
     environment:
       sdk: ">=3.6.0-128.0.dev"
-      flutter: ">=3.25.0-0.0.pre"
+      flutter: ">=3.25.0-1.0.pre.67"
     dependencies:
       freezed_annotation: ^2.4.4
       _macros:
