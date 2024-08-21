@@ -12,6 +12,7 @@ abstract class CodePushState {
 
 @Equatable()
 final class CodePushInitial extends CodePushState {
+  
   const CodePushInitial();
 }
 
