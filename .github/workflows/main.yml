@@ -41,7 +41,7 @@ jobs:
           # flutter-version: '3.0.0'
           channel: "master"
       - run: flutter --version
-      - run: dart pub global activate melos
+      - run: flutter pub global activate melos
       - run: melos bs
 
       # you can even build aab or ipa as per your command but remember you need to change the relese code for  artifacts:  directory
