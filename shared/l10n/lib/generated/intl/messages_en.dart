@@ -32,12 +32,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "VPNnotAllowed":
+            MessageLookupByLibrary.simpleMessage("VPN Not Allowed"),
         "apples": m0,
         "connected": m1,
         "date": MessageLookupByLibrary.simpleMessage(
             "Today\'s date is {date, date, ::yMMMMd}"),
         "greeting": m2,
-        "notConnected": MessageLookupByLibrary.simpleMessage("Offline"),
+        "notConnected": MessageLookupByLibrary.simpleMessage("Not Connected"),
         "price": MessageLookupByLibrary.simpleMessage(
             "The price is {value, currency, ::currency/USD}"),
         "title": MessageLookupByLibrary.simpleMessage("Localization Example"),

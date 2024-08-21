@@ -157,10 +157,17 @@ final class _SystemEventObserverState extends State<SystemEventObserver>
             } else {
               final result = streamSnapshot.requireData;
               return BannerHost(
-                  hideBanner: result != connection.ConnectivityResult.none,
+                  hideBanner: switch (result) {
+                    connection.ConnectivityResult.none => false,
+                    connection.ConnectivityResult.vpn => false,
+                    _ => true
+                  },
+
+                  //  (result != connection.ConnectivityResult.none || result != connection.ConnectivityResult.vpn ),
                   banner: Material(
                     color: switch (result) {
                       connection.ConnectivityResult.none => Colors.red,
+                      connection.ConnectivityResult.vpn => Colors.yellow,
                       _ => Colors.green,
                     },
                     // (result != connection.ConnectivityResult.none)
@@ -175,6 +182,8 @@ final class _SystemEventObserverState extends State<SystemEventObserver>
                         switch (result) {
                           connection.ConnectivityResult.none =>
                             context.l10n.notConnected,
+                          connection.ConnectivityResult.vpn =>
+                            context.l10n.VPNnotAllowed,
                           _ => context.l10n.connected(result.name.toString())
                         },
                         // (result != connection.ConnectivityResult.none)

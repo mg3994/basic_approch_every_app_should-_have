@@ -28,6 +28,10 @@
   "notConnected": "Not Connected",
   "@notConnected": {
     "description": "Message shown when the app is offline."
+  },
+  "VPNnotAllowed": "VPN Not Allowed",
+  "@VPNnotAllowed": {
+    "description": "Message shown when the app is Using VPN."
   }
 
 }

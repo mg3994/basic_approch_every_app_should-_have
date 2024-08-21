@@ -20,6 +20,9 @@ var box = await Hive.openBox('myBox');
 await box.put('hello', 'world');
 await box.close();
 
+```bash
+flutter test  --enable-experiment=macros test/equatable_test.dart
+```
 
 TODO: List what your package can do. Maybe include images, gifs, or videos.
 

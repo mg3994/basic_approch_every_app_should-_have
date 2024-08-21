@@ -32,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "VPNnotAllowed":
+            MessageLookupByLibrary.simpleMessage("VPN स्चीकार नहीं"),
         "apples": m0,
         "connected": m1,
         "date": MessageLookupByLibrary.simpleMessage(

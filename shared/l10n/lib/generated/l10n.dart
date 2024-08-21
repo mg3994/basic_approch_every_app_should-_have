@@ -127,12 +127,22 @@ class Aptr {
     );
   }
 
-  /// `Offline`
+  /// `Not Connected`
   String get notConnected {
     return Intl.message(
-      'Offline',
+      'Not Connected',
       name: 'notConnected',
       desc: 'Message shown when the app is offline.',
+      args: [],
+    );
+  }
+
+  /// `VPN Not Allowed`
+  String get VPNnotAllowed {
+    return Intl.message(
+      'VPN Not Allowed',
+      name: 'VPNnotAllowed',
+      desc: 'Message shown when the app is Using VPN.',
       args: [],
     );
   }

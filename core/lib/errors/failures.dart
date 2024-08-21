@@ -46,20 +46,18 @@
 import 'package:dependencies/dependencies.dart';
 
 @pragma('antinna:keep-to-string-in-subtypes by remind')
-// @Equatable(
-//     stringify:
-//         true) // TODO: // stringify for above use case //comment this here but apply this in all subtypes
+// TODO: // stringify for above use case //comment this here but apply this in all subtypes
 abstract interface class Failure {
-  factory Failure([var message]) => _Failure(message);
+  factory Failure([var message]) => PFailure(message);
   String? get message;
 }
 
 /// Default implementation of [Failure] which carries a message.
 @Equatable(stringify: true) // stringify for above use case
-final class _Failure implements Failure {
+final class PFailure implements Failure {
   final dynamic _message;
 
-  const _Failure([this._message]);
+  const PFailure([this._message]);
   @override
   String? get message => _message.toString();
 }

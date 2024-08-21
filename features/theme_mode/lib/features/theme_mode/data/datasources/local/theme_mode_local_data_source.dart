@@ -3,7 +3,7 @@ import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
 abstract interface class ThemeModeLocalDataSource {
-  Future<ThemeMode?> getThemeMode();
+  Future<ThemeMode?> getThemeMode(); //never use dartz here
   Future<void> setThemeMode(ThemeMode themeMode);
 }
 

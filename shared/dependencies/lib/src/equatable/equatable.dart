@@ -110,7 +110,8 @@ macro class Equatable implements ClassDeclarationsMacro, ClassDefinitionMacro {
 
   @override
   FutureOr<void> buildDeclarationsForClass(ClassDeclaration clazz, MemberDeclarationBuilder builder)async {
-
+  // Assuming `clazz.identifier.name` gives you the class name as a string
+final String className = clazz.identifier.name;
 
     final boolean = await  builder.resolveIdentifier(Uri.parse('dart:core'), 'bool');
       final integer = await builder.resolveIdentifier(Uri.parse('dart:core'), 'int');
@@ -166,7 +167,7 @@ macro class Equatable implements ClassDeclarationsMacro, ClassDefinitionMacro {
 
     }
 
-    return builder.declareInType(DeclarationCode.fromParts(['  external ', boolean, ' operator==(', ' covariant ', '${clazz.identifier.name}' ' other);\n',
+    return builder.declareInType(DeclarationCode.fromParts(['  external ', boolean, ' operator==(', ' covariant ', '${className}' ' other);\n',
     '  external ', integer, ' get hashCode;\n', //if nothing in fields then hash code will be 0 , that's not good, change full logic
     if (stringify) ...['  external ', string, ' toString();'],
 
