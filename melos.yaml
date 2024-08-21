@@ -7,7 +7,23 @@ packages:
   - core
   - features/*
   - shared/*
+command:
+  bootstrap:
+    environment:
+      sdk: ^3.6.0-128.0.dev
+      flutter: ">=3.22.0"
+    dependencies:
+      freezed_annotation: ^2.4.4
+      _macros:
+        sdk: dart
+      
 
+    dev_dependencies:
+      flutter_test:
+      bloc_test: ^9.1.7
+      build_runner: ^2.4.12
+      freezed: ^2.5.7
+      json_serializable: ^6.8.0
 # Scripts to automate tasks
 scripts:
    # Localization code generation for the l10n package
