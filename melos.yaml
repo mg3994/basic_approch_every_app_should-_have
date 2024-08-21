@@ -19,7 +19,8 @@ command:
       
 
     dev_dependencies:
-      flutter_test:
+      flutter_test: 
+        sdk: flutter
       bloc_test: ^9.1.7
       build_runner: ^2.4.12
       freezed: ^2.5.7
