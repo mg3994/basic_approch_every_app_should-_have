@@ -1,7 +1,7 @@
 name: theme_mode
 description: "A new Flutter package project."
 version: 0.0.1
-homepage:
+# homepage:
 publish_to: none
 
 environment:
